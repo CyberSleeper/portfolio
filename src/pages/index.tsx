@@ -4,8 +4,8 @@ import { useRef, useState, useLayoutEffect } from 'react'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import ThemeContext from '@/components/contexts/ThemeContext'
 import OrbitControls from '@/components/orbitControls'
-
-
+import { useMediaQuery } from 'react-responsive';
+import Intro from '@/sections/Intro'
 
 interface objProps {
   horizontal?: boolean
@@ -121,6 +121,7 @@ function Light(props: JSX.IntrinsicElements['mesh']) {
 
 export default function App() {
   const { dark, toggle } = React.useContext(ThemeContext);
+  const isMobile = useMediaQuery({ maxWidth: 768 });
   return (
     <div className='min-h-screen w-full'>
       <div className='h-screen w-full top-0 left-0 fixed -z-10'>
@@ -128,9 +129,19 @@ export default function App() {
           {/* <axesHelper args={[5]} /> */}
           <ambientLight intensity={1} />
           <Light />
-          <Box position={[3.2, 0, 1]} scale={0.5} speed={1} delta={{ x: 0, y: 0.01, z: 0 }} color={dark ? '#A9997A' : '#D3AA87'} />
-          <Tetra position={[3, 0, -0.5]} scale={0.6} speed={1.4} delta={{ x: -0.01, y: 0, z: 0 }} color={dark ? '#A9997A' : '#D3AA87'} />
-          <Sphere position={[3.5, -2, 0]} scale={0.3} speed={0.8} delta={{ x: 0, y: 0, z: 0 }} color={dark ? '#A9997A' : '#D3AA87'} />
+          {isMobile ? (
+            <>
+              <Box position={[-0.4, 0, 1]} scale={0.5} speed={1} delta={{ x: 0, y: 0.01, z: 0 }} color={dark ? '#A9997A' : '#D3AA87'} />
+              <Tetra position={[0, 0, -0.5]} scale={0.6} speed={1.4} delta={{ x: -0.01, y: 0, z: 0 }} color={dark ? '#A9997A' : '#D3AA87'} />
+              <Sphere position={[0.5, -2, 0]} scale={0.3} speed={0.8} delta={{ x: 0, y: 0, z: 0 }} color={dark ? '#A9997A' : '#D3AA87'} />
+            </>
+          ) : (
+            <>
+              <Box position={[3.2, 0, 1]} scale={0.5} speed={1} delta={{ x: 0, y: 0.01, z: 0 }} color={dark ? '#A9997A' : '#D3AA87'} />
+              <Tetra position={[3, 0, -0.5]} scale={0.6} speed={1.4} delta={{ x: -0.01, y: 0, z: 0 }} color={dark ? '#A9997A' : '#D3AA87'} />
+              <Sphere position={[3.5, -2, 0]} scale={0.3} speed={0.8} delta={{ x: 0, y: 0, z: 0 }} color={dark ? '#A9997A' : '#D3AA87'} />
+            </>
+          )}
           <mesh rotation={[-Math.PI/3, 0, 0]} receiveShadow={true} position={[0, 0, -3.5]}>
             <planeGeometry args={[20, 20, 32, 32]} />
             <meshStandardMaterial color={dark ? '#33353C' : '#CDC0B2'} />
@@ -142,73 +153,7 @@ export default function App() {
           {/* <OrbitControls /> */}
         </Canvas>
       </div>
-      <div className='pointer-events-none'>
-        LOREM IPSUM<br/>
-        LOREM IPSUM<br/>
-        LOREM IPSUM<br/>
-        LOREM IPSUM<br/>
-        LOREM IPSUM<br/>
-        LOREM IPSUM<br/>
-        LOREM IPSUM<br/>
-        LOREM IPSUM<br/>
-        LOREM IPSUM<br/>
-        LOREM IPSUM<br/>
-        LOREM IPSUM<br/>
-        LOREM IPSUM<br/>
-        LOREM IPSUM<br/>
-        LOREM IPSUM<br/>
-        LOREM IPSUM<br/>
-        LOREM IPSUM<br/>
-        LOREM IPSUM<br/>
-        LOREM IPSUM<br/>
-        LOREM IPSUM<br/>
-        LOREM IPSUM<br/>
-        LOREM IPSUM<br/>
-        LOREM IPSUM<br/>
-        LOREM IPSUM<br/>
-        LOREM IPSUM<br/>
-        LOREM IPSUM<br/>
-        LOREM IPSUM<br/>
-        LOREM IPSUM<br/>
-        LOREM IPSUM<br/>
-        LOREM IPSUM<br/>
-        LOREM IPSUM<br/>
-        LOREM IPSUM<br/>
-        LOREM IPSUM<br/>
-        LOREM IPSUM<br/>
-        LOREM IPSUM<br/>
-        LOREM IPSUM<br/>
-        LOREM IPSUM<br/>
-        LOREM IPSUM<br/>
-        LOREM IPSUM<br/>
-        LOREM IPSUM<br/>
-        LOREM IPSUM<br/>
-        LOREM IPSUM<br/>
-        LOREM IPSUM<br/>
-        LOREM IPSUM<br/>
-        LOREM IPSUM<br/>
-        LOREM IPSUM<br/>
-        LOREM IPSUM<br/>
-        LOREM IPSUM<br/>
-        LOREM IPSUM<br/>
-        LOREM IPSUM<br/>
-        LOREM IPSUM<br/>
-        LOREM IPSUM<br/>
-        LOREM IPSUM<br/>
-        LOREM IPSUM<br/>
-        LOREM IPSUM<br/>
-        LOREM IPSUM<br/>
-        LOREM IPSUM<br/>
-        LOREM IPSUM<br/>
-        LOREM IPSUM<br/>
-        LOREM IPSUM<br/>
-        LOREM IPSUM<br/>
-        LOREM IPSUM<br/>
-        LOREM IPSUM<br/>
-        LOREM IPSUM<br/>
-        LOREM IPSUM<br/>
-        LOREM IPSUM<br/>
-      </div>
+      <Intro />
     </div>
   )
 }
