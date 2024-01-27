@@ -94,24 +94,22 @@ function Sphere(props: JSX.IntrinsicElements['mesh'] & objProps) {
 
 function Light(props: JSX.IntrinsicElements['mesh']) {
   const [mouse, setMouse] = useState({ x: 0, y: 0 })
-  const canvas = useThree(state => state.gl.domElement)
 
   useLayoutEffect(() => {
     const updateMousePosition = (event: MouseEvent) => {
-      const rect = canvas.getBoundingClientRect()
-      const x = ((event.clientX - rect.left) / rect.width) * 2 - 1
-      const y = -((event.clientY - rect.top) / rect.height) * 2 + 1
+      const rect = window.document.body.getBoundingClientRect()
+      const x = ((event.clientX) / rect.width) * 2 - 1
+      const y = -((event.clientY) / rect.height) * 2 + 1
       console.log(x, y)
-      console.log(rect.width, rect.height)
       setMouse({ x, y })
     }
 
-    canvas.addEventListener('mousemove', updateMousePosition)
+    window.addEventListener('mousemove', updateMousePosition)
 
     return () => {
-      canvas.removeEventListener('mousemove', updateMousePosition)
+      window.removeEventListener('mousemove', updateMousePosition)
     }
-  }, [canvas])
+  }, [window])
 
   return (
     <mesh>
@@ -124,8 +122,8 @@ function Light(props: JSX.IntrinsicElements['mesh']) {
 export default function App() {
   const { dark, toggle } = React.useContext(ThemeContext);
   return (
-    <div className='min-h-screen w-full bg-light-background dark:bg-dark-background'>
-      <div className='h-screen w-full top-0 left-0 fixed'>
+    <div className='min-h-screen w-full'>
+      <div className='h-screen w-full top-0 left-0 fixed -z-10'>
         <Canvas className='w-full h-screen' shadows>
           {/* <axesHelper args={[5]} /> */}
           <ambientLight intensity={1} />
@@ -133,18 +131,18 @@ export default function App() {
           <Box position={[3.2, 0, 1]} scale={0.5} speed={1} delta={{ x: 0, y: 0.01, z: 0 }} color={dark ? '#A9997A' : '#D3AA87'} />
           <Tetra position={[3, 0, -0.5]} scale={0.6} speed={1.4} delta={{ x: -0.01, y: 0, z: 0 }} color={dark ? '#A9997A' : '#D3AA87'} />
           <Sphere position={[3.5, -2, 0]} scale={0.3} speed={0.8} delta={{ x: 0, y: 0, z: 0 }} color={dark ? '#A9997A' : '#D3AA87'} />
-          <mesh rotation={[-Math.PI/3, 0, 0]} receiveShadow={true} position={[0, 0, -3]}>
+          <mesh rotation={[-Math.PI/3, 0, 0]} receiveShadow={true} position={[0, 0, -3.5]}>
             <planeGeometry args={[20, 20, 32, 32]} />
             <meshStandardMaterial color={dark ? '#33353C' : '#CDC0B2'} />
           </mesh>
-          <mesh receiveShadow={true} position={[0, 0, -1]}>
+          <mesh receiveShadow={true} position={[0, 0, -1.5]}>
             <planeGeometry args={[20, 20, 32, 32]} />
             <meshStandardMaterial color={dark ? '#33353C' : '#CDC0B2'} />
           </mesh>
           {/* <OrbitControls /> */}
         </Canvas>
       </div>
-      <div>
+      <div className='pointer-events-none'>
         LOREM IPSUM<br/>
         LOREM IPSUM<br/>
         LOREM IPSUM<br/>
