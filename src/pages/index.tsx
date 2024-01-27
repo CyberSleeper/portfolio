@@ -7,13 +7,14 @@ import OrbitControls from '@/components/orbitControls'
 
 
 
-interface Animate {
+interface objProps {
   horizontal?: boolean
   speed: number
   delta: { x: number, y: number, z: number }
+  color: string
 }
 
-function Box(props: JSX.IntrinsicElements['mesh'] & Animate) {
+function Box(props: JSX.IntrinsicElements['mesh'] & objProps) {
   const ref = useRef<THREE.Mesh>(null!)
   const [hovered, hover] = useState(false)
   const [clicked, click] = useState(false)
@@ -33,14 +34,15 @@ function Box(props: JSX.IntrinsicElements['mesh'] & Animate) {
       onClick={(event) => click(!clicked)}
       onPointerOver={(event) => hover(true)}
       onPointerOut={(event) => hover(false)}
+      castShadow={true}
     >
       <boxGeometry args={[1, 1, 1]} />
-      <meshStandardMaterial color={hovered ? '#A9997A' : '#BBBCBD'} />
+      <meshStandardMaterial color={props.color} />
     </mesh>
   )
 }
 
-function Tetra(props: JSX.IntrinsicElements['mesh'] & Animate) {
+function Tetra(props: JSX.IntrinsicElements['mesh'] & objProps) {
   const ref = useRef<THREE.Mesh>(null!)
   const [hovered, hover] = useState(false)
   const [clicked, click] = useState(false)
@@ -60,14 +62,15 @@ function Tetra(props: JSX.IntrinsicElements['mesh'] & Animate) {
       onClick={(event) => click(!clicked)}
       onPointerOver={(event) => hover(true)}
       onPointerOut={(event) => hover(false)}
+      castShadow={true}
     >
       <tetrahedronGeometry args={[1, 0]} />
-      <meshStandardMaterial color={hovered ? '#A9997A' : '#BBBCBD'} />
+      <meshStandardMaterial color={props.color} />
     </mesh>
   )
 }
 
-function Sphere(props: JSX.IntrinsicElements['mesh'] & Animate) {
+function Sphere(props: JSX.IntrinsicElements['mesh'] & objProps) {
   const ref = useRef<THREE.Mesh>(null!)
 
   useFrame((state) => {
@@ -81,9 +84,10 @@ function Sphere(props: JSX.IntrinsicElements['mesh'] & Animate) {
     <mesh
       {...props}
       ref={ref}
+      castShadow={true}
     >
       <sphereGeometry args={[1, 32, 32]} />
-      <meshStandardMaterial color={'#BBBCBD'} />
+      <meshStandardMaterial color={props.color} />
     </mesh>
   )
 }
@@ -111,7 +115,8 @@ function Light(props: JSX.IntrinsicElements['mesh']) {
 
   return (
     <mesh>
-      <pointLight position={[mouse.x * 5, mouse.y * 5, 2]} intensity={5} />
+      <pointLight position={[mouse.x * 5, mouse.y * 5, 2]} intensity={10} castShadow={true} />
+      {/* <directionalLight position={[mouse.x * 5, mouse.y * 5, 2]} intensity={1} castShadow={true} /> */}
     </mesh>
   )
 }
@@ -121,13 +126,21 @@ export default function App() {
   return (
     <div className='min-h-screen w-full bg-light-background dark:bg-dark-background'>
       <div className='h-screen w-full top-0 left-0 fixed'>
-        <Canvas className='w-full h-screen'>
+        <Canvas className='w-full h-screen' shadows>
           {/* <axesHelper args={[5]} /> */}
-          {/* <ambientLight intensity={0.5} /> */}
+          <ambientLight intensity={1} />
           <Light />
-          <Box position={[3.2, 0, 1]} scale={0.5} speed={1} delta={{ x: 0, y: 0.01, z: 0 }} />
-          <Tetra position={[3, 0, -1]} scale={0.6} speed={1.4} delta={{ x: -0.01, y: 0, z: 0 }} />
-          <Sphere position={[3.5, -2, 0]} scale={0.3} speed={0.8} delta={{ x: 0, y: 0, z: 0 }} />
+          <Box position={[3.2, 0, 1]} scale={0.5} speed={1} delta={{ x: 0, y: 0.01, z: 0 }} color={dark ? '#A9997A' : '#D3AA87'} />
+          <Tetra position={[3, 0, -0.5]} scale={0.6} speed={1.4} delta={{ x: -0.01, y: 0, z: 0 }} color={dark ? '#A9997A' : '#D3AA87'} />
+          <Sphere position={[3.5, -2, 0]} scale={0.3} speed={0.8} delta={{ x: 0, y: 0, z: 0 }} color={dark ? '#A9997A' : '#D3AA87'} />
+          <mesh rotation={[-Math.PI/3, 0, 0]} receiveShadow={true} position={[0, 0, -3]}>
+            <planeGeometry args={[20, 20, 32, 32]} />
+            <meshStandardMaterial color={dark ? '#33353C' : '#CDC0B2'} />
+          </mesh>
+          <mesh receiveShadow={true} position={[0, 0, -1]}>
+            <planeGeometry args={[20, 20, 32, 32]} />
+            <meshStandardMaterial color={dark ? '#33353C' : '#CDC0B2'} />
+          </mesh>
           {/* <OrbitControls /> */}
         </Canvas>
       </div>
