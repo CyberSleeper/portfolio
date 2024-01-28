@@ -124,7 +124,7 @@ export default function App() {
   const isMobile = useMediaQuery({ maxWidth: 768 });
 
   const planeColor = dark ? '#33353C' : '#DEB596'
-  const meshColor = dark ? '#EAE0D5' : '#484343'
+  const meshColor = dark ? '#EAE0D5' : '#325A8D'
 
   return (
     <div className='min-h-screen w-full'>
