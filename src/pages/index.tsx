@@ -2,10 +2,10 @@ import * as THREE from 'three'
 import * as React from 'react'
 import { useRef, useState, useLayoutEffect } from 'react'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
-import ThemeContext from '@/components/contexts/ThemeContext'
+import ThemeContext from '@/contexts/ThemeContext'
 import OrbitControls from '@/components/orbitControls'
 import { useMediaQuery } from 'react-responsive';
-import Intro from '@/sections/Intro'
+import Hero from '@/sections/Hero'
 
 interface objProps {
   horizontal?: boolean
@@ -122,6 +122,10 @@ function Light(props: JSX.IntrinsicElements['mesh']) {
 export default function App() {
   const { dark, toggle } = React.useContext(ThemeContext);
   const isMobile = useMediaQuery({ maxWidth: 768 });
+
+  const planeColor = dark ? '#33353C' : '#DEB596'
+  const meshColor = dark ? '#EAE0D5' : '#484343'
+
   return (
     <div className='min-h-screen w-full'>
       <div className='h-screen w-full top-0 left-0 fixed -z-10'>
@@ -131,29 +135,29 @@ export default function App() {
           <Light />
           {isMobile ? (
             <>
-              <Box position={[-0.4, 0, 1]} scale={0.5} speed={1} delta={{ x: 0, y: 0.01, z: 0 }} color={dark ? '#A9997A' : '#D3AA87'} />
-              <Tetra position={[0, 0, -0.5]} scale={0.6} speed={1.4} delta={{ x: -0.01, y: 0, z: 0 }} color={dark ? '#A9997A' : '#D3AA87'} />
-              <Sphere position={[0.5, -2, 0]} scale={0.3} speed={0.8} delta={{ x: 0, y: 0, z: 0 }} color={dark ? '#A9997A' : '#D3AA87'} />
+              <Box position={[-0.4, 0, 1]} scale={0.5} speed={1} delta={{ x: 0, y: 0.01, z: 0 }} color={meshColor} />
+              <Tetra position={[0, 0, -0.5]} scale={0.6} speed={1.4} delta={{ x: -0.01, y: 0, z: 0 }} color={meshColor} />
+              <Sphere position={[0.5, -2, 0]} scale={0.3} speed={0.8} delta={{ x: 0, y: 0, z: 0 }} color={meshColor} />
             </>
           ) : (
             <>
-              <Box position={[3.2, 0, 1]} scale={0.5} speed={1} delta={{ x: 0, y: 0.01, z: 0 }} color={dark ? '#A9997A' : '#D3AA87'} />
-              <Tetra position={[3, 0, -0.5]} scale={0.6} speed={1.4} delta={{ x: -0.01, y: 0, z: 0 }} color={dark ? '#A9997A' : '#D3AA87'} />
-              <Sphere position={[3.5, -2, 0]} scale={0.3} speed={0.8} delta={{ x: 0, y: 0, z: 0 }} color={dark ? '#A9997A' : '#D3AA87'} />
+              <Box position={[3.2, 0, 1]} scale={0.5} speed={1} delta={{ x: 0, y: 0.01, z: 0 }} color={meshColor} />
+              <Tetra position={[3, 0, -0.5]} scale={0.6} speed={1.4} delta={{ x: -0.01, y: 0, z: 0 }} color={meshColor} />
+              <Sphere position={[3.5, -2, 0]} scale={0.3} speed={0.8} delta={{ x: 0, y: 0, z: 0 }} color={meshColor} />
             </>
           )}
           <mesh rotation={[-Math.PI/3, 0, 0]} receiveShadow={true} position={[0, 0, -3.5]}>
             <planeGeometry args={[20, 20, 32, 32]} />
-            <meshStandardMaterial color={dark ? '#33353C' : '#CDC0B2'} />
+            <meshStandardMaterial color={planeColor} />
           </mesh>
           <mesh receiveShadow={true} position={[0, 0, -1.5]}>
             <planeGeometry args={[20, 20, 32, 32]} />
-            <meshStandardMaterial color={dark ? '#33353C' : '#CDC0B2'} />
+            <meshStandardMaterial color={planeColor} />
           </mesh>
           {/* <OrbitControls /> */}
         </Canvas>
       </div>
-      <Intro />
+      <Hero />
     </div>
   )
 }

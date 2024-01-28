@@ -1,4 +1,4 @@
-import { createContext, useState, useLayoutEffect } from "react";
+import { createContext, useState, useEffect } from "react";
 
 const ThemeContext = createContext({
   dark: false,
@@ -8,9 +8,12 @@ const ThemeContext = createContext({
 export function ThemeProvider(props: any) {
   const [dark, setDark] = useState(false);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const lastTheme = window.localStorage.getItem("darkTheme");
-    setDark(!lastTheme || lastTheme === 'true')
+    if (lastTheme === 'true') {
+      setDark(true);
+      document.documentElement.classList.add("dark");
+    }
   }, [dark]);
 
   const toggle = () => {

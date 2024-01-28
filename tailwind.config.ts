@@ -18,16 +18,26 @@ export const config: Config = {
       colors: {
         dark: {
           background: "#33353C",
-          primary: "#BBBCBD",
-          secondary: "#A9997A",
-          section: "#1B161B"
+          primary: "#EAE0D5",
+          secondary: "#C6AC8F",
+          section: "#22333B",
         },
         light: {
-          background: "#CDC0B2",
-          primary: "#3A3739",
-          secondary: "#D3AA87",
-          section: "#E7E5E8",
-        }
+          background: "#DEB596",
+          primary: "#484343",
+          secondary: "#EFE6DF",
+          section: "#325A8D",
+        },
+        white: "#FDFEFF",
+        desertSand: "#DEB596",
+        linen: "#EFE6DF",
+        lapisLazuli: "#325A8D",
+        jet: "#484343",
+        walnutBrown: "#5E503F",
+        khaki: "#C6AC8F",
+        almond: "#EAE0D5",
+        gunMetal: "#22333B",
+        black: "#0A0908"
       }
     },
   },
