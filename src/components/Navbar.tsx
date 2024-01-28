@@ -1,5 +1,6 @@
 import ThemeContext from "@/contexts/ThemeContext"
 import { useContext, useState } from "react";
+import { Link as ScrollLink } from 'react-scroll';
 import Link from 'next/link'
 import { motion } from "framer-motion";
 
@@ -21,17 +22,20 @@ const NavLink = ({
   };
 
   return (
-    <Link
-      href={href}
+    <ScrollLink
+      to={href}
+      smooth={true}
+      duration={500}
+      offset={-100}
       onMouseEnter={handleHover}
       onMouseLeave={handleMouseLeave}
-      className="text-xl text-light-secondary dark:text-dark-secondary"
+      className="text-xl text-light-secondary dark:text-dark-secondary hover:cursor-pointer"
     >
       <div>
         {children}
         <div className={`w-full h-1 rounded-full bg-dark-section dark:bg-light-section transition-all ${ isHovered ? "scale-100" : "scale-0" }`}/>
       </div>
-    </Link>
+    </ScrollLink>
   )
 }
 
@@ -42,11 +46,11 @@ const Navbar = () => {
     hover: { scale: 1.1 },
   };
   return (
-    <nav className="transition-all flex fixed top-0 left-0 w-full z-10 bg-light-section dark:bg-dark-section scale-95 my-5 px-6 py-4 align-middle justify-between">
+    <nav className="font-satoshi transition-all flex fixed top-0 left-0 w-full z-10 bg-light-section dark:bg-dark-section scale-95 my-5 px-6 py-4 align-middle justify-between rounded-2xl">
       <div className="flex gap-6">
-        <h2 className="text-2xl font-bold text-light-secondary dark:text-dark-secondary whitespace-pre-line">
+        <Link href='/' className="text-2xl font-bold text-light-secondary dark:text-dark-secondary whitespace-pre-line">
           GILANG
-        </h2>
+        </Link>
         <motion.button
           onClick={toggle}
           className="flex align-middle items-center text-xl bg-light-secondary dark:bg-dark-secondary rounded-full w-14 transition-all px-2"
@@ -58,9 +62,8 @@ const Navbar = () => {
         </motion.button>
       </div>
       <div className="flex flex-row align-middle items-center gap-16">
-        <NavLink href="/">Home</NavLink>
-        <NavLink href="/about">About</NavLink>
-        <NavLink href="/projects">Projects</NavLink>
+        <NavLink href="about">About</NavLink>
+        <NavLink href="projects">Projects</NavLink>
       </div>
       <div className="flex flex-row align-middle items-center gap-8">
         <NavLink href="/contact">Contact</NavLink>

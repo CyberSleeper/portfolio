@@ -6,6 +6,7 @@ import ThemeContext from '@/contexts/ThemeContext'
 import OrbitControls from '@/components/orbitControls'
 import { useMediaQuery } from 'react-responsive';
 import Hero from '@/sections/Hero'
+import About from '@/sections/About'
 
 interface objProps {
   horizontal?: boolean
@@ -86,9 +87,17 @@ function Sphere(props: JSX.IntrinsicElements['mesh'] & objProps) {
       ref={ref}
       castShadow={true}
     >
-      <sphereGeometry args={[1, 32, 32]} />
+      <capsuleGeometry args={[0.5, 1, 32, 32]} />
       <meshStandardMaterial color={props.color} />
     </mesh>
+    // <mesh
+    //   {...props}
+    //   ref={ref}
+    //   castShadow={true}
+    // >
+    //   <sphereGeometry args={[1, 32, 32]} />
+    //   <meshStandardMaterial color={props.color} />
+    // </mesh>
   )
 }
 
@@ -137,13 +146,13 @@ export default function App() {
             <>
               <Box position={[-0.4, 0, 1]} scale={0.5} speed={1} delta={{ x: 0, y: 0.01, z: 0 }} color={meshColor} />
               <Tetra position={[0, 0, -0.5]} scale={0.6} speed={1.4} delta={{ x: -0.01, y: 0, z: 0 }} color={meshColor} />
-              <Sphere position={[0.5, -2, 0]} scale={0.3} speed={0.8} delta={{ x: 0, y: 0, z: 0 }} color={meshColor} />
+              <Sphere position={[0.8, -2, 0]} scale={0.3} speed={0.8} delta={{ x: 0.017, y: -0.0001, z: 0.0007 }} color={meshColor} />
             </>
           ) : (
             <>
               <Box position={[3.2, 0, 1]} scale={0.5} speed={1} delta={{ x: 0, y: 0.01, z: 0 }} color={meshColor} />
               <Tetra position={[3, 0, -0.5]} scale={0.6} speed={1.4} delta={{ x: -0.01, y: 0, z: 0 }} color={meshColor} />
-              <Sphere position={[3.5, -2, 0]} scale={0.3} speed={0.8} delta={{ x: 0, y: 0, z: 0 }} color={meshColor} />
+              <Sphere position={[3.8, -2, 0]} scale={0.3} speed={0.8} delta={{ x: 0.017, y: -0.0001, z: 0.0007 }} color={meshColor} />
             </>
           )}
           <mesh rotation={[-Math.PI/3, 0, 0]} receiveShadow={true} position={[0, 0, -3.5]}>
@@ -158,6 +167,9 @@ export default function App() {
         </Canvas>
       </div>
       <Hero />
+      <section id='about'>
+        <About/>
+      </section>
     </div>
   )
 }
