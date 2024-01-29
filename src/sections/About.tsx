@@ -8,6 +8,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function About() {
   const el = useRef(null);
+  const curved = useRef(null);
 
   useGSAP(() => {
     gsap.from(el.current, {
@@ -24,13 +25,33 @@ export default function About() {
       y: -50,
       duration: 1,
     });
-  
+  })
+
+  useGSAP(() => {
+    gsap.from(curved.current, {
+      scrollTrigger: {
+        trigger: curved.current,
+        scrub: true,
+        start: "top bottom",
+        end: "top top",
+      },
+      borderTopLeftRadius: "100% 0%",
+      borderTopRightRadius: "100% 0%",
+      marginTop: "0",
+      // ease: "none",
+    });
   })
 
   return (
-    <section className="font-satoshi min-h-screen bg-light-section dark:bg-dark-section my-10 rounded-3xl px-24">
+    <section ref={curved} className="-mt-48 transition-all font-satoshi min-h-screen bg-light-section dark:bg-dark-section px-24 pt-16 flex flex-col items-center"
+      style={{
+        left: "-3%",
+        borderTopLeftRadius: "100% 50%",
+        borderTopRightRadius: "100% 50%",
+      }}
+    >
       <FadeIn>
-        <h1 className="text-5xl font-bold text-light-secondary dark:text-dark-secondary pt-10">About Me</h1>
+        <h1 className="text-5xl font-bold text-light-secondary dark:text-dark-secondary">About Me</h1>
       </FadeIn>
       <div className="flex mt-10 gap-16">
         <div className="w-3/5">

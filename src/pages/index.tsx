@@ -167,6 +167,13 @@ export default function App() {
         </Canvas>
       </div>
       <Hero />
+      {/* <div className='z-10 h-32 w-full bg-light-section dark:bg-dark-section -mt-16'
+        style={{
+          left: "-3%",
+          borderTopLeftRadius: "100% 120%",
+          borderTopRightRadius: "100% 120%",
+        }}
+      /> */}
       <section id='about'>
         <About/>
       </section>

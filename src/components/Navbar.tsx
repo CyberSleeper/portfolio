@@ -1,8 +1,10 @@
 import ThemeContext from "@/contexts/ThemeContext"
 import { useContext, useState } from "react";
-import { Link as ScrollLink } from 'react-scroll';
 import Link from 'next/link'
 import { motion } from "framer-motion";
+import gsap from "gsap";
+import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
+gsap.registerPlugin(ScrollToPlugin)
 
 const NavLink = ({
   children,
@@ -22,20 +24,19 @@ const NavLink = ({
   };
 
   return (
-    <ScrollLink
-      to={href}
-      smooth={true}
-      duration={500}
-      offset={-100}
+    <div
       onMouseEnter={handleHover}
       onMouseLeave={handleMouseLeave}
       className="text-xl text-light-secondary dark:text-dark-secondary hover:cursor-pointer"
+      onClick={() => {
+        gsap.to(window, { duration: 2, scrollTo: { y: href, offsetY: 150 }, ease: "circ.out"});
+      }}
     >
       <div>
         {children}
         <div className={`w-full h-1 rounded-full bg-dark-section dark:bg-light-section transition-all ${ isHovered ? "scale-100" : "scale-0" }`}/>
       </div>
-    </ScrollLink>
+    </div>
   )
 }
 
@@ -62,11 +63,11 @@ const Navbar = () => {
         </motion.button>
       </div>
       <div className="flex flex-row align-middle items-center gap-16">
-        <NavLink href="about">About</NavLink>
-        <NavLink href="projects">Projects</NavLink>
+        <NavLink href="#about">About</NavLink>
+        <NavLink href="#projects">Projects</NavLink>
       </div>
       <div className="flex flex-row align-middle items-center gap-8">
-        <NavLink href="/contact">Contact</NavLink>
+        <NavLink href="#contact">Contact</NavLink>
       </div>
     </nav>
   )

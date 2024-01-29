@@ -1,7 +1,9 @@
 import React from "react";
 import { TypeAnimation } from "react-type-animation";
-import { Link as ScrollLink } from 'react-scroll';
 import Link from 'next/link'
+import gsap from "gsap";
+import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
+gsap.registerPlugin(ScrollToPlugin)
 
 export default function Hero() {
   const roles = [
@@ -25,15 +27,14 @@ export default function Hero() {
               repeat={Infinity}
             />
           </h1>
-          <ScrollLink
-            to="about"
-            smooth={true}
-            duration={500}
-            offset={-100}
-            className="text-xl px-6 py-4 w-fit rounded-xl bg-lapisLazuli text-white dark:bg-light-primary font-bold hover:cursor-pointer hover:scale-105 active:scale-90 transition-all"
+          <div
+            className="text-xl px-6 py-4 w-fit rounded-xl bg-light-background text-dark-background dark:text-dark-primary dark:bg-light-primary font-bold hover:cursor-pointer hover:scale-105 active:scale-90 transition-all"
+            onClick={() => {
+              gsap.to(window, { duration: 2, scrollTo: { y: "#about", offsetY: 150 }, ease: "circ.out"});
+            }}
           >
             Learn More
-          </ScrollLink>
+          </div>
         </div>
       </div>
     </section>
