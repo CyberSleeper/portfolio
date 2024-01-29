@@ -46,7 +46,7 @@ const Navbar = () => {
     hover: { scale: 1.1 },
   };
   return (
-    <nav className="font-satoshi transition-all flex fixed top-0 left-0 w-full z-10 bg-light-section dark:bg-dark-section scale-95 my-5 px-6 py-4 align-middle justify-between rounded-2xl">
+    <nav className="shadow-xl font-satoshi transition-all flex fixed top-0 left-0 w-full z-10 bg-light-section dark:bg-dark-section scale-95 my-5 px-6 py-4 align-middle justify-between rounded-2xl">
       <div className="flex gap-6">
         <Link href='/' className="text-2xl font-bold text-light-secondary dark:text-dark-secondary whitespace-pre-line">
           GILANG
