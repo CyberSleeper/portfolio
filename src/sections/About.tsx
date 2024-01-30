@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React, { useRef } from "react";
-import FadeIn from "@/components/gsap/fadeIn";
+import FadeIn from "@/components/animations/fadeIn";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";

@@ -109,7 +109,6 @@ function Light(props: JSX.IntrinsicElements['mesh']) {
       const rect = window.document.body.getBoundingClientRect()
       const x = ((event.clientX) / rect.width) * 2 - 1
       const y = -((event.clientY) / rect.height) * 2 + 1
-      console.log(x, y)
       setMouse({ x, y })
     }
 
