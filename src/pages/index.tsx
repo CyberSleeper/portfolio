@@ -177,7 +177,7 @@ export default function App() {
       <section id='about'>
         <About />
       </section>
-      <section id='skills' className='z-10'>
+      <section id='skills'>
         <Skills />
       </section>
       <div className='bg-light-section dark:bg-dark-section min-h-screen'>

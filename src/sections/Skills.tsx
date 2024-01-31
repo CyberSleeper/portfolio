@@ -31,28 +31,26 @@ export default function Skills() {
   }
 
   return (
-    <div className="bg-light-secondary dark:bg-dark-secondary w-max flex relative">
-      <div className="w-full h-full absolute">
-      </div>
+    <div className="bg-light-secondary dark:bg-dark-secondary px-20 overflow-hidden">
       <div 
-        className="flex w-max py-12"
+        className="flex w-full py-12 [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-200px),transparent_100%)]"
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        <div className={`flex ${isHovering && 'pause'} animate-marquee-infinite overflow-hidden`}>
+        <div className={`flex ${isHovering && 'pause'} animate-marquee-infinite`}>
           {
             skills.map((skill, index) => (
-              <div key={index} className="flex-1 flex justify-center items-center ml-16">
-                <Image src={skill} alt="skill" width={100} height={100} />
+              <div key={index} className="flex justify-center items-center ml-16 h-full w-max align-middle">
+                <img src={skill} alt="skill" width={100} height={100} />
               </div>
             ))
           }
         </div>
-        <div className={`flex ${isHovering && 'pause'} animate-marquee-infinite overflow-hidden`}>
+        <div className={`flex ${isHovering && 'pause'} animate-marquee-infinite`}>
           {
             skills.map((skill, index) => (
-              <div key={index} className="flex-1 flex justify-center items-center ml-16">
-                <Image src={skill} alt="skill" width={100} height={100} />
+              <div key={index} className="flex justify-center items-center ml-16 h-full w-max align-middle">
+                <img src={skill} alt="skill" width={100} height={100} />
               </div>
             ))
           }

@@ -43,7 +43,7 @@ export default function About() {
   })
 
   return (
-    <div ref={curved} className="-mt-48 transition-all font-satoshi min-h-screen bg-light-section dark:bg-dark-section px-24 pt-16 flex flex-col items-center"
+    <div ref={curved} className="-mt-48 transition-all font-satoshi pb-24 bg-light-section dark:bg-dark-section px-24 pt-16 flex flex-col items-center"
       style={{
         left: "-3%",
         borderTopLeftRadius: "100% 50%",
