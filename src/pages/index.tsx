@@ -7,6 +7,7 @@ import OrbitControls from '@/components/orbitControls'
 import { useMediaQuery } from 'react-responsive';
 import Hero from '@/sections/Hero'
 import About from '@/sections/About'
+import Skills from '@/sections/Skills'
 
 interface objProps {
   horizontal?: boolean
@@ -174,8 +175,14 @@ export default function App() {
         }}
       /> */}
       <section id='about'>
-        <About/>
+        <About />
       </section>
+      <section id='skills' className='z-10'>
+        <Skills />
+      </section>
+      <div className='bg-light-section dark:bg-dark-section min-h-screen'>
+
+      </div>
     </div>
   )
 }
