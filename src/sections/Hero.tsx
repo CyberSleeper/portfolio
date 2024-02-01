@@ -19,7 +19,7 @@ export default function Hero() {
       <div className='flex flex-col justify-center h-screen px-24'>
         <div className='flex flex-col'>
           <h2 className='text-6xl font-bold text-light-secondary dark:text-dark-secondary'>Mahartha Gemilang</h2>
-          <h1 className='my-8 h-48 text-8xl font-bold text-light-primary dark:text-dark-primary whitespace-pre-line'>
+          <h1 className='mb-8 h-48 opacity-90 text-8xl font-bold text-light-primary dark:text-dark-primary whitespace-pre-line'>
             <TypeAnimation
               sequence={roles}
               wrapper="span"
@@ -28,7 +28,7 @@ export default function Hero() {
             />
           </h1>
           <div
-            className="text-xl px-6 py-4 w-fit rounded-xl bg-light-background text-dark-background dark:text-dark-primary dark:bg-light-primary font-bold hover:cursor-pointer hover:scale-105 active:scale-90 transition-all"
+            className="text-xl px-6 py-4 w-fit rounded-xl bg-almond text-light-primary dark:bg-light-secondary font-bold hover:cursor-pointer hover:scale-105 active:scale-90 transition-all"
             onClick={() => {
               gsap.to(window, { duration: 2, scrollTo: { y: "#about", offsetY: 150 }, ease: "circ.out"});
             }}
