@@ -17,10 +17,11 @@ export const config: Config = {
       },
       colors: {
         dark: {
-          background: "#33353C",
-          primary: "#EAE0D5",
-          secondary: "#C6AC8F",
-          section: "#22333B",
+          background: "#161F37",
+          primary: "#54709C",
+          secondary: "#D2B2A4",
+          text: "#E3DBD8",
+          accent: "#60C1E3",
         },
         light: {
           background: "#DEB596",

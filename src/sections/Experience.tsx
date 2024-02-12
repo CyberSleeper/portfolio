@@ -87,10 +87,35 @@ export default function Experience() {
 
 
   return (
-    <div className="transition-all min-h-screen font-satoshi pb-24 bg-light-section dark:bg-dark-section px-24 pt-16 flex flex-col">
+    <div className="transition-all min-h-screen font-satoshi pb-24 bg-light-background dark:bg-dark-background px-24 pt-16 flex flex-col">
       <FadeIn>
         <h1 className="text-5xl font-bold text-light-secondary dark:text-dark-secondary">Experience</h1>
       </FadeIn>
+      <div className="flex h-max">
+        <div className="w-4 h-max bg-red-500"/>
+        <div>
+          {
+            experiences.map((experience, index) => (
+              <FadeIn key={index} delay={index * 0.2}>
+                <div className="mt-12">
+                  <h1 className="text-3xl font-bold text-light-text dark:text-dark-text">{experience.position}</h1>
+                  <h2 className="text-xl font-bold text-light-accent dark:text-dark-accent">
+                    <a href={experience.company.website} target="_blank" rel="noreferrer">{experience.company.name}</a>
+                  </h2>
+                  <h3 className="text-lg font-bold text-light-text dark:text-dark-text opacity-30">{experience.start_date} - {experience.end_date}</h3>
+                  <div className="mt-4">
+                    {
+                      experience.descriptions.map((description, index) => (
+                        <p key={index} className="text-light-text dark:text-dark-text">+ {description}</p>
+                      ))
+                    }
+                  </div>
+                </div>
+              </FadeIn>
+            ))
+          }
+        </div>
+      </div>
     </div>
   );
 }

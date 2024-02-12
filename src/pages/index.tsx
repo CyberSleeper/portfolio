@@ -133,15 +133,15 @@ export default function App() {
   const { dark, toggle } = React.useContext(ThemeContext);
   const isMobile = useMediaQuery({ maxWidth: 768 });
 
-  const planeColor = dark ? '#33353C' : '#DEB596'
-  const meshColor = dark ? '#EAE0D5' : '#325A8D'
+  const planeColor = dark ? '#54709C' : '#DEB596'
+  const meshColor = dark ? '#60C1E3' : '#325A8D'
 
   return (
     <div className='min-h-screen w-full'>
       <div className='h-screen w-full top-0 left-0 fixed -z-10'>
         <Canvas className='w-full h-screen' shadows>
           {/* <axesHelper args={[5]} /> */}
-          <ambientLight intensity={1} />
+          <ambientLight intensity={0.1} />
           <Light />
           {isMobile ? (
             <>
