@@ -1,6 +1,8 @@
 import Image from "next/image"
 import { useRef, useState } from "react"
 import gsap from "gsap"
+import { PiAsteriskDuotone, PiStarFourFill } from "react-icons/pi";
+import { GiMoonOrbit } from "react-icons/gi";
 
 interface SkillProps {
   src: string
@@ -120,9 +122,16 @@ export default function Skills() {
     >
       <div
         ref={cursorDiv}
-        className="opacity-0 absolute w-16 h-16 bg-black rounded-full pointer-events-none z-10 mix-blend-difference"
+        className="opacity-0 absolute w-16 h-16 rounded-full pointer-events-none z-10 mix-blend-difference"
         style={{filter: "invert(1)"}}
-      />
+      >
+        <div className="relative rounded-full border-2 w-20 h-20 flex items-center align-middle justify-center">
+          <div className="absolute self-center flex w-24 h-24 items-center animate-spin-slow-10">
+            <PiStarFourFill className="w-5 h-5 animate-spin-reverse-slow-5"/>
+          </div>
+          <PiAsteriskDuotone className="w-16 h-16 animate-spin-slow-25" />
+        </div>
+      </div>
       <div className="w-full px-20 overflow-hidden h-12 text-center -mb-10 mt-4">
         <h1 className={`text-4xl font-bold h-full transition-all duration-500 ${showSkill ? 'opacity-100' : 'opacity-0'}`}>{skill}</h1>
       </div>
