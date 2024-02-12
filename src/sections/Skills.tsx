@@ -3,6 +3,7 @@ import { useRef, useState } from "react"
 import gsap from "gsap"
 import { PiAsteriskDuotone, PiStarFourFill } from "react-icons/pi";
 import { GiMoonOrbit } from "react-icons/gi";
+import ReactCurvedText from "react-curved-text"
 
 interface SkillProps {
   src: string
@@ -126,15 +127,35 @@ export default function Skills() {
         style={{filter: "invert(1)"}}
       >
         <div className="relative rounded-full border-2 w-20 h-20 flex items-center align-middle justify-center">
-          <div className="absolute self-center flex w-24 h-24 items-center animate-spin-slow-10">
+          <div className="absolute flex w-max h-max min-w-24 min-h-24 items-center justify-center">
+            <div className={`font-bold text-black flex items-center justify-center transition-all ${showSkill ? 'opacity-100' : 'opacity-0'}`}>
+              <ReactCurvedText
+                  width={300}
+                  height={300}
+                  cx={150}
+                  cy={150}
+                  rx={80}
+                  ry={80}
+                  startOffset={0}
+                  reversed={true}
+                  text={(" • "+skill).repeat(100)}
+                  textProps={{ style: { fontSize: 20 } }}
+              />
+            </div>
+          </div>
+          <div className="z-10 absolute flex w-max h-max min-w-24 min-h-24 items-center animate-spin-slow-10">
             <PiStarFourFill className="w-5 h-5 animate-spin-reverse-slow-5"/>
           </div>
+          <div className="z-10 absolute flex w-max h-max min-w-36 min-h-36 justify-center animate-spin-reverse-slow-10">
+            <GiMoonOrbit className="w-5 h-5 animate-spin-slow-10"/>
+          </div>
+          <div className="absolute flex w-max h-max min-w-32 min-h-32 border-2 rounded-full"/>
           <PiAsteriskDuotone className="w-16 h-16 animate-spin-slow-25" />
         </div>
       </div>
-      <div className="w-full px-20 overflow-hidden h-12 text-center -mb-10 mt-4">
+      {/* <div className="w-full px-20 overflow-hidden h-12 text-center -mb-10 mt-4">
         <h1 className={`text-4xl font-bold h-full transition-all duration-500 ${showSkill ? 'opacity-100' : 'opacity-0'}`}>{skill}</h1>
-      </div>
+      </div> */}
       <div 
         className="flex w-full py-12 [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-200px),transparent_100%)]"
         onMouseEnter={handleMouseEnter}
