@@ -53,10 +53,12 @@ export const config: Config = {
       animation : {
         'spin-slow-30': 'spin 30s linear infinite',
         'spin-slow-25': 'spin 25s linear infinite',
+        'spin-slow-15': 'spin 15s linear infinite',
         'spin-slow-10': 'spin 10s linear infinite',
         'spin-slow-5': 'spin 5s linear infinite',
         'spin-reverse-slow-30': 'spin 30s linear infinite reverse',
         'spin-reverse-slow-25': 'spin 25s linear infinite reverse',
+        'spin-reverse-slow-15': 'spin 15s linear infinite reverse',
         'spin-reverse-slow-10': 'spin 10s linear infinite reverse',
         'spin-reverse-slow-5': 'spin 5s linear infinite reverse',
         'marquee-infinite' : 'marquee 25s linear infinite',

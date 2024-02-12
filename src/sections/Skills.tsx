@@ -146,8 +146,8 @@ export default function Skills() {
           <div className="z-10 absolute flex w-max h-max min-w-24 min-h-24 items-center animate-spin-slow-10">
             <PiStarFourFill className="w-5 h-5 animate-spin-reverse-slow-5"/>
           </div>
-          <div className="z-10 absolute flex w-max h-max min-w-36 min-h-36 justify-center animate-spin-reverse-slow-10">
-            <GiMoonOrbit className="w-5 h-5 animate-spin-slow-10"/>
+          <div className="z-10 absolute flex w-max h-max min-w-36 min-h-36 justify-center animate-spin-reverse-slow-15">
+            <GiMoonOrbit className="w-5 h-5 animate-spin-slow-15"/>
           </div>
           <div className="absolute flex w-max h-max min-w-32 min-h-32 border-2 rounded-full"/>
           <PiAsteriskDuotone className="w-16 h-16 animate-spin-slow-25" />
