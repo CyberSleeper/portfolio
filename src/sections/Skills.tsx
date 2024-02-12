@@ -128,7 +128,7 @@ export default function Skills() {
       >
         <div className="relative rounded-full border-2 w-20 h-20 flex items-center align-middle justify-center">
           <div className="absolute flex w-max h-max min-w-24 min-h-24 items-center justify-center">
-            <div className={`font-bold text-black flex items-center justify-center transition-all ${showSkill ? 'opacity-100' : 'opacity-0'}`}>
+            <div className={`font-bold text-black flex items-center justify-center transition-all animate-spin-reverse-slow-30 ${showSkill ? 'opacity-100' : 'opacity-0'}`}>
               <ReactCurvedText
                   width={300}
                   height={300}
@@ -161,20 +161,20 @@ export default function Skills() {
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        <div className={`flex ${isHovering && 'pause'} animate-marquee-infinite`}>
+        <div className={`flex ${isHovering && 'pause'} select-none animate-marquee-infinite`}>
           {
             skills.map((skill, index) => (
-              <div key={index} className="flex justify-center items-center ml-16 h-full w-max align-middle" onMouseEnter={() => handleSetSkill(skill.alt)} onMouseLeave={handleClearSkill}>
-                <img src={skill.src} alt="skill" width={100} height={100} />
+              <div key={index} className="select-none flex justify-center items-center ml-16 h-full w-max align-middle" onMouseEnter={() => handleSetSkill(skill.alt)} onMouseLeave={handleClearSkill}>
+                <img src={skill.src} draggable='false' alt="skill" width={100} height={100} />
               </div>
             ))
           }
         </div>
-        <div className={`flex ${isHovering && 'pause'} animate-marquee-infinite`}>
+        <div className={`flex ${isHovering && 'pause'} select-none animate-marquee-infinite`}>
           {
             skills.map((skill, index) => (
               <div key={index} className="flex justify-center items-center ml-16 h-full w-max align-middle" onMouseEnter={() => handleSetSkill(skill.alt)} onMouseLeave={handleClearSkill}>
-                <img src={skill.src} alt="skill" width={100} height={100} />
+                <img src={skill.src} draggable='false' alt="skill" width={100} height={100} />
               </div>
             ))
           }
