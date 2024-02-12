@@ -8,6 +8,7 @@ import { useMediaQuery } from 'react-responsive';
 import Hero from '@/sections/Hero'
 import About from '@/sections/About'
 import Skills from '@/sections/Skills'
+import Experience from '@/sections/Experience'
 
 interface objProps {
   horizontal?: boolean
@@ -180,9 +181,9 @@ export default function App() {
       <section id='skills'>
         <Skills />
       </section>
-      <div className='bg-light-section dark:bg-dark-section min-h-screen'>
-
-      </div>
+      <section id='experience'>
+        <Experience />
+      </section>
     </div>
   )
 }
