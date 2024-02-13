@@ -1,5 +1,23 @@
 import React from "react";
 import FadeIn from "@/components/animations/fadeIn";
+import { 
+  WiMoonAltNew,
+  WiMoonAltWaxingCrescent1, 
+  WiMoonAltWaxingCrescent2, 
+  WiMoonAltWaxingCrescent3, 
+  WiMoonAltWaxingCrescent4, 
+  WiMoonAltWaxingCrescent5, 
+  WiMoonAltWaxingCrescent6,
+  WiMoonAltFirstQuarter,
+  WiMoonAltWaxingGibbous1,
+  WiMoonAltWaxingGibbous2,
+  WiMoonAltWaxingGibbous3,
+  WiMoonAltWaxingGibbous4,
+  WiMoonAltWaxingGibbous5,
+  WiMoonAltWaxingGibbous6,
+  WiMoonAltFull,
+} from "react-icons/wi";
+import { useState } from "react";
 
 interface CompanyProps {
   name: string
@@ -7,6 +25,7 @@ interface CompanyProps {
 }
 
 interface ExperienceProps {
+  pref: number
   position: string
   company: CompanyProps
   start_date: string
@@ -14,8 +33,27 @@ interface ExperienceProps {
   descriptions: string[]
 }
 
+const bulletStyles = [
+  WiMoonAltNew,
+  WiMoonAltWaxingCrescent1,
+  WiMoonAltWaxingCrescent2,
+  WiMoonAltWaxingCrescent3,
+  WiMoonAltWaxingCrescent4,
+  WiMoonAltWaxingCrescent5,
+  WiMoonAltWaxingCrescent6,
+  WiMoonAltFirstQuarter,
+  WiMoonAltWaxingGibbous1,
+  WiMoonAltWaxingGibbous2,
+  WiMoonAltWaxingGibbous3,
+  WiMoonAltWaxingGibbous4,
+  WiMoonAltWaxingGibbous5,
+  WiMoonAltWaxingGibbous6,
+  WiMoonAltFull,
+]
+
 const experiences: ExperienceProps[] = [
   {
+    pref: 0,
     position: "Backend Engineer",
     company: {
       name: "TamanSchool",
@@ -29,6 +67,7 @@ const experiences: ExperienceProps[] = [
     ]
   },
   {
+    pref: 2,
     position: "Fullstack Engineer",
     company: {
       name: "Pemira UI 2024",
@@ -42,6 +81,7 @@ const experiences: ExperienceProps[] = [
     ]
   },
   {
+    pref: 4,
     position: "Lead Software Engineer",
     company: {
       name: "Open House Fasilkom UI 2023",
@@ -56,9 +96,10 @@ const experiences: ExperienceProps[] = [
     ]
   },
   {
+    pref: 7,
     position: "Fullstack Engineer",
     company: {
-      name: "PMB Fasilkom UI",
+      name: "PMB Fasilkom UI 2023",
       website: "https://pmb.cs.ui.ac.id"
     },
     start_date: "Jul 2023",
@@ -69,6 +110,7 @@ const experiences: ExperienceProps[] = [
     ]
   },
   {
+    pref: 9,
     position: "Software Engineer",
     company: {
       name: "GovTech Procurement | Telkom Indonesia",
@@ -83,8 +125,24 @@ const experiences: ExperienceProps[] = [
   },
 ]
 
-export default function Experience() {
+interface BulletPointProps {
+  index: number;
+  children: React.ReactNode;
+}
 
+const BulletPoint: React.FC<BulletPointProps> = ({ index, children }) => {
+  const BulletStyle = bulletStyles[index % bulletStyles.length];
+  return (
+    <div className="flex mb-2 gap-3">
+      <BulletStyle size={18} className="mt-1" />
+      {children}
+    </div>
+  );
+};
+
+
+export default function Experience() {
+  const [bulletIdx, setBulletIdx] = useState(0)
 
   return (
     <div className="transition-all min-h-screen font-satoshi pb-24 bg-light-background dark:bg-dark-background px-24 pt-16 flex flex-col">
@@ -106,7 +164,8 @@ export default function Experience() {
                   <div className="mt-4">
                     {
                       experience.descriptions.map((description, index) => (
-                        <p key={index} className="text-light-text dark:text-dark-text">+ {description}</p>
+                        <BulletPoint key={index} index={experience.pref+index}>{description}</BulletPoint>
+                        // <p key={index} className="text-light-text dark:text-dark-text flex mb-2 gap-3"><WiMoonAltNew size={18} className="mt-1"/> {description}</p>
                       ))
                     }
                   </div>
