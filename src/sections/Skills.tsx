@@ -119,7 +119,7 @@ export default function Skills() {
     <div 
       ref={baseDiv}
       onMouseMove={handleMouseMove}
-      className="bg-light-secondary dark:bg-dark-secondary px-20 overflow-hidden relative hover:cursor-none"
+      className="bg-light-primary dark:bg-dark-darkGrey px-20 overflow-hidden relative hover:cursor-none"
     >
       <div
         ref={cursorDiv}
@@ -128,7 +128,7 @@ export default function Skills() {
       >
         <div className="relative rounded-full border-2 w-20 h-20 flex items-center align-middle justify-center">
           <div className="absolute flex w-max h-max min-w-24 min-h-24 items-center justify-center">
-            <div className={`font-bold text-black flex items-center justify-center transition-all animate-spin-reverse-slow-30 ${showSkill ? 'opacity-100' : 'opacity-0'}`}>
+            <div className={`font-bold flex items-center justify-center transition-all animate-spin-reverse-slow-30 ${showSkill ? 'opacity-100' : 'opacity-0'}`}>
               <ReactCurvedText
                   width={300}
                   height={300}

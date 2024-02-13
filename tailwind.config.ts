@@ -22,6 +22,7 @@ export const config: Config = {
           secondary: "#D2B2A4",
           text: "#E3DBD8",
           accent: "#60C1E3",
+          darkGrey: "#3C3C4D"
         },
         light: {
           background: "#DEB596",

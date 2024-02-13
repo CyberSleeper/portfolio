@@ -1,7 +1,7 @@
 import * as THREE from 'three'
 import * as React from 'react'
 import { useRef, useState, useLayoutEffect } from 'react'
-import { Canvas, useFrame, useThree } from '@react-three/fiber'
+import { Canvas, useFrame, useLoader, useThree } from '@react-three/fiber'
 import ThemeContext from '@/contexts/ThemeContext'
 import OrbitControls from '@/components/orbitControls'
 import { useMediaQuery } from 'react-responsive';
@@ -9,6 +9,7 @@ import Hero from '@/sections/Hero'
 import About from '@/sections/About'
 import Skills from '@/sections/Skills'
 import Experience from '@/sections/Experience'
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 
 interface objProps {
   horizontal?: boolean
@@ -129,7 +130,48 @@ function Light(props: JSX.IntrinsicElements['mesh']) {
   )
 }
 
+function Model() {
+  const [mouse, setMouse] = useState({ x: 0, y: 0 })
+  const gltf = useLoader(GLTFLoader, 'three_models/suisei.glb');
+
+  // Set custom position
+  gltf.scene.position.set(3, -2, 0);
+  // gltf.scene.rotation.set(Math.PI/2, 0, 0.5);
+  gltf.scene.traverse(function (node: any) {
+    if (node.isMesh) {
+      node.castShadow = true;
+      node.receiveShadow = true;
+    }
+  });
+
+  useFrame((state, delta) => {
+    gltf.scene.position.y = Math.sin(state.clock.getElapsedTime()) * 0.2 - 1.5
+  })
+
+  useLayoutEffect(() => {
+    const updateMousePosition = (event: MouseEvent) => {
+      const rect = window.document.body.getBoundingClientRect()
+      const x = ((event.clientX) / rect.width) * 2 - 1
+      const y = -((event.clientY) / rect.height) * 2 + 1
+      setMouse({ x, y })
+      gltf.scene.rotation.set(Math.PI*2/3 - y, 0, 1-x);
+    }
+
+    window.addEventListener('mousemove', updateMousePosition)
+
+    return () => {
+      window.removeEventListener('mousemove', updateMousePosition)
+    }
+  }, [window])
+
+  // Rotate model
+  // useFrame((state, delta) => (gltf.scene.rotation.y += 0.01));
+
+  return <primitive object={gltf.scene} />;
+}
+
 export default function App() {
+
   const { dark, toggle } = React.useContext(ThemeContext);
   const isMobile = useMediaQuery({ maxWidth: 768 });
 
@@ -154,6 +196,7 @@ export default function App() {
               <Box position={[3.2, 0, 1]} scale={0.5} speed={1} delta={{ x: 0, y: 0.01, z: 0 }} color={meshColor} />
               <Tetra position={[3, 0, -0.5]} scale={0.6} speed={1.4} delta={{ x: -0.01, y: 0, z: 0 }} color={meshColor} />
               <Sphere position={[3.8, -2, 0]} scale={0.3} speed={0.8} delta={{ x: 0.017, y: -0.0001, z: 0.0007 }} color={meshColor} />
+              <Model />
             </>
           )}
           <mesh rotation={[-Math.PI/3, 0, 0]} receiveShadow={true} position={[0, 0, -3.5]}>
