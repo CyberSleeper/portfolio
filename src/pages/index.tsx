@@ -132,11 +132,13 @@ function Light(props: JSX.IntrinsicElements['mesh']) {
 
 function Model() {
   const [mouse, setMouse] = useState({ x: 0, y: 0 })
-  const gltf = useLoader(GLTFLoader, 'three_models/suisei.glb');
+  const gltf = useLoader(GLTFLoader, 'three_models/suicopath.glb');
 
   // Set custom position
   gltf.scene.position.set(3, -2, 0);
-  // gltf.scene.rotation.set(Math.PI/2, 0, 0.5);
+  useLayoutEffect(() => {
+    gltf.scene.rotation.set(0, 0, 0);
+  }, []);
   gltf.scene.traverse(function (node: any) {
     if (node.isMesh) {
       node.castShadow = true;
@@ -154,7 +156,7 @@ function Model() {
       const x = ((event.clientX) / rect.width) * 2 - 1
       const y = -((event.clientY) / rect.height) * 2 + 1
       setMouse({ x, y })
-      gltf.scene.rotation.set(Math.PI*2/3 - y, 0, 1-x);
+      gltf.scene.rotation.set(Math.PI*1/4-y, -Math.PI*1/4+x, 0);
     }
 
     window.addEventListener('mousemove', updateMousePosition)
@@ -187,15 +189,16 @@ export default function App() {
           <Light />
           {isMobile ? (
             <>
-              <Box position={[-0.4, 0, 1]} scale={0.5} speed={1} delta={{ x: 0, y: 0.01, z: 0 }} color={meshColor} />
+              {/* <Box position={[-0.4, 0, 1]} scale={0.5} speed={1} delta={{ x: 0, y: 0.01, z: 0 }} color={meshColor} />
               <Tetra position={[0, 0, -0.5]} scale={0.6} speed={1.4} delta={{ x: -0.01, y: 0, z: 0 }} color={meshColor} />
-              <Sphere position={[0.8, -2, 0]} scale={0.3} speed={0.8} delta={{ x: 0.017, y: -0.0001, z: 0.0007 }} color={meshColor} />
+              <Sphere position={[0.8, -2, 0]} scale={0.3} speed={0.8} delta={{ x: 0.017, y: -0.0001, z: 0.0007 }} color={meshColor} /> */}
+              <Model />
             </>
           ) : (
             <>
-              <Box position={[3.2, 0, 1]} scale={0.5} speed={1} delta={{ x: 0, y: 0.01, z: 0 }} color={meshColor} />
+              {/* <Box position={[3.2, 0, 1]} scale={0.5} speed={1} delta={{ x: 0, y: 0.01, z: 0 }} color={meshColor} />
               <Tetra position={[3, 0, -0.5]} scale={0.6} speed={1.4} delta={{ x: -0.01, y: 0, z: 0 }} color={meshColor} />
-              <Sphere position={[3.8, -2, 0]} scale={0.3} speed={0.8} delta={{ x: 0.017, y: -0.0001, z: 0.0007 }} color={meshColor} />
+              <Sphere position={[3.8, -2, 0]} scale={0.3} speed={0.8} delta={{ x: 0.017, y: -0.0001, z: 0.0007 }} color={meshColor} /> */}
               <Model />
             </>
           )}
@@ -230,3 +233,7 @@ export default function App() {
     </div>
   )
 }
+function useEffect(arg0: () => void, arg1: never[]) {
+  throw new Error('Function not implemented.')
+}
+

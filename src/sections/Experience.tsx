@@ -158,7 +158,7 @@ export default function Experience() {
                 <div className="mt-12">
                   <h1 className="text-3xl font-bold text-light-text dark:text-dark-text">{experience.position}</h1>
                   <h2 className="text-xl font-bold text-light-accent dark:text-dark-accent">
-                    <a href={experience.company.website} target="_blank" rel="noreferrer">{experience.company.name}</a>
+                    <a href={experience.company.website} target="_blank" rel="noreferrer" className="hover:underline">{experience.company.name}</a>
                   </h2>
                   <h3 className="text-lg font-bold text-light-text dark:text-dark-text opacity-30">{experience.start_date} - {experience.end_date}</h3>
                   <div className="mt-4">

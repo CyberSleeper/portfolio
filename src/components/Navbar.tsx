@@ -52,7 +52,7 @@ const Navbar = () => {
         <Link href='/' className="text-2xl font-bold text-light-secondary dark:text-dark-accent whitespace-pre-line">
           GILANG
         </Link>
-        <motion.button
+        {/* <motion.button
           onClick={toggle}
           className="flex align-middle items-center text-xl bg-light-secondary dark:bg-dark-secondary rounded-full w-14 transition-all px-2"
           variants={buttonVariants}
@@ -60,7 +60,7 @@ const Navbar = () => {
           whileHover="hover"
         >
           <div className="rounded-full w-4 h-4 bg-light-primary dark:bg-dark-primary transition-all ml-0 dark:ml-6" />
-        </motion.button>
+        </motion.button> */}
       </div>
       <div className="flex flex-row align-middle items-center gap-16">
         <NavLink href="#about">About</NavLink>
