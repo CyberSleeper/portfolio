@@ -18,6 +18,7 @@ import {
   WiMoonAltFull,
 } from "react-icons/wi";
 import { useState } from "react";
+import HighlightOnScroll from "@/components/animations/highlightOnScroll";
 
 interface CompanyProps {
   name: string
@@ -154,7 +155,7 @@ export default function Experience() {
         <div>
           {
             experiences.map((experience, index) => (
-              <FadeIn key={index} delay={index * 0.2}>
+              <HighlightOnScroll key={index}>
                 <div className="mt-12">
                   <h1 className="text-3xl font-bold text-light-text dark:text-dark-text">{experience.position}</h1>
                   <h2 className="text-xl font-bold text-light-accent dark:text-dark-accent">
@@ -170,7 +171,7 @@ export default function Experience() {
                     }
                   </div>
                 </div>
-              </FadeIn>
+              </HighlightOnScroll>
             ))
           }
         </div>

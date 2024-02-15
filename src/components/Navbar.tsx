@@ -64,7 +64,7 @@ const Navbar = () => {
       </div>
       <div className="flex flex-row align-middle items-center gap-16">
         <NavLink href="#about">About</NavLink>
-        <NavLink href="#projects">Projects</NavLink>
+        <NavLink href="#experience">Projects</NavLink>
       </div>
       <div className="flex flex-row align-middle items-center gap-8">
         <NavLink href="#contact">Contact</NavLink>
