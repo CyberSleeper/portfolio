@@ -11,14 +11,14 @@ export default function HighlightOnScroll({ children, ...props }: { children: Re
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: el.current,
-        start: "center bottom",
-        end: "center top",
+        start: "bottom bottom",
+        end: "top top",
         toggleActions: "restart none none reverse",
         scrub: 1,
       },
       defaults: {
         duration: 1,
-      }
+      },
     });
 
     tl.from(el.current, {

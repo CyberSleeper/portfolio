@@ -64,7 +64,7 @@ const experiences: ExperienceProps[] = [
     end_date: "Present",
     descriptions: [
       "Maintained the backend services for TamanSchool's platform.",
-      "Developed the backend services for Class Making using Django.",
+      "Developed the backend services for Class Making Request using Django.",
     ]
   },
   {
@@ -124,6 +124,20 @@ const experiences: ExperienceProps[] = [
       "Developed session recording on database access for audit purposes using Metabase."
     ]
   },
+  {
+    pref: 11,
+    position: "Fullstack Engineer",
+    company: {
+      name: "PERAK Fasilkom UI 2023",
+      website: "https://perak.cs.ui.ac.id"
+    },
+    start_date: "Mar 2023",
+    end_date: "Jun 2023",
+    descriptions: [
+      "Developed the scoreboard reusable component for PERAK Fasilkom UI's website using TailwindCSS and NextJS.",
+
+    ]
+  },
 ]
 
 interface BulletPointProps {
@@ -148,7 +162,7 @@ export default function Experience() {
   return (
     <div className="transition-all min-h-screen font-satoshi pb-24 bg-light-background dark:bg-dark-background px-24 pt-16 flex flex-col">
       <FadeIn>
-        <h1 className="text-5xl font-bold text-light-secondary dark:text-dark-secondary">Experience</h1>
+        <h1 className="text-5xl font-bold text-light-secondary dark:text-dark-secondary">My Experience</h1>
       </FadeIn>
       <div className="flex h-max">
         <div className="w-4 h-max bg-red-500"/>
