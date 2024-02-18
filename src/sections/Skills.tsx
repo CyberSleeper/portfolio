@@ -16,6 +16,10 @@ const skills: SkillProps[] = [
     alt: 'C++'
   },
   {
+    src: '/skills/React.png',
+    alt: 'React'
+  },
+  {
     src: '/skills/CSS_logo.png',
     alt: 'CSS'
   },

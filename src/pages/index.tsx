@@ -9,6 +9,7 @@ import Hero from '@/sections/Hero'
 import About from '@/sections/About'
 import Skills from '@/sections/Skills'
 import Experience from '@/sections/Experience'
+import Contact from '@/sections/Contact'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 
 interface objProps {
@@ -229,6 +230,9 @@ export default function App() {
       </section>
       <section id='experience'>
         <Experience />
+      </section>
+      <section id='contact'>
+        <Contact />
       </section>
     </div>
   )
