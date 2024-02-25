@@ -27,13 +27,23 @@ export default function Hero() {
               repeat={Infinity}
             />
           </h1>
-          <div
-            className="text-xl px-6 py-4 w-fit rounded-xl bg-almond text-black dark:bg-dark-primary font-bold hover:cursor-pointer hover:scale-105 active:scale-90 transition-all"
-            onClick={() => {
-              gsap.to(window, { duration: 2, scrollTo: { y: "#about", offsetY: 150 }, ease: "circ.out"});
-            }}
-          >
-            Learn More
+          <div className="flex gap-4">
+            <div
+              className="text-xl px-6 py-4 w-fit rounded-xl text-black bg-dark-primary hover:bg-dark-accent font-bold hover:cursor-pointer hover:scale-105 active:scale-90 transition-all"
+              onClick={() => {
+                gsap.to(window, { duration: 2, scrollTo: { y: "#about", offsetY: 150 }, ease: "circ.out"});
+              }}
+            >
+              Learn More
+            </div>
+            <div
+              className="text-xl px-6 py-4 w-fit rounded-xl text-almond opacity-95 border-almond border-2 bg-transparent hover:text-dark-accent  font-bold hover:cursor-pointer hover:scale-105 active:scale-90 transition-all"
+              onClick={() => {
+                gsap.to(window, { duration: 2, scrollTo: { y: "#about", offsetY: 150 }, ease: "circ.out"});
+              }}
+            >
+              View Resume
+            </div>
           </div>
         </div>
       </div>
