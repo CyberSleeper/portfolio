@@ -36,14 +36,17 @@ export default function Hero() {
             >
               Learn More
             </div>
-            <div
-              className="text-xl px-6 py-4 w-fit rounded-xl text-almond opacity-95 border-almond border-2 bg-transparent hover:text-dark-accent  font-bold hover:cursor-pointer hover:scale-105 active:scale-90 transition-all"
-              onClick={() => {
-                gsap.to(window, { duration: 2, scrollTo: { y: "#about", offsetY: 150 }, ease: "circ.out"});
-              }}
+            <Link
+              href='https://drive.google.com/file/d/1Wl3PkP8tsxTe8lMkubiJAin6k3URnJ7p/view?usp=sharing'
+              target="_blank"
+              rel="noreferrer"
             >
-              View Resume
-            </div>
+              <div
+                className="text-xl px-6 py-4 w-fit rounded-xl text-almond opacity-95 border-almond border-2 bg-transparent hover:text-dark-accent  font-bold hover:cursor-pointer hover:scale-105 active:scale-90 transition-all"
+              >
+                View Resume
+              </div>
+            </Link>
           </div>
         </div>
       </div>
