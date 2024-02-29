@@ -32,9 +32,12 @@ const NavLink = ({
         gsap.to(window, { duration: 2, scrollTo: { y: href, offsetY: 150 }, ease: "circ.out"});
       }}
     >
-      <div>
-        {children}
-        <div className={`w-full h-1 rounded-full bg-dark-section dark:bg-light-section transition-all ${ isHovered ? "scale-100" : "scale-0" }`}/>
+      <div className="flex flex-col justify-between">
+        <div className={`w-full h-0.5 rounded-full bg-dark-section bg-white transition-all duration-300 ${ isHovered ? "scale-100" : "scale-0" }`}/>
+        <div className={`transition-all duration-500 my-0.5 ${isHovered ? 'tracking-widest text-dark-accent' : ''}`}>
+          {children}
+        </div>
+        <div className={`w-full h-0.5 rounded-full bg-dark-section bg-white transition-all duration-300 ${ isHovered ? "scale-100" : "scale-0" }`}/>
       </div>
     </div>
   )
@@ -47,9 +50,9 @@ const Navbar = () => {
     hover: { scale: 1.1 },
   };
   return (
-    <nav className="z-20 shadow-xl font-satoshi transition-all flex fixed top-0 left-0 w-full bg-light-section dark:bg-dark-background scale-95 my-5 px-6 py-4 align-middle justify-between rounded-2xl">
+    <nav className="z-20 shadow-xl font-satoshi transition-all flex fixed top-0 left-0 w-full bg-light-section dark:bg-dark-background scale-95 my-5 px-6 h-16 align-middle justify-between rounded-2xl">
       <div className="flex gap-6">
-        <Link href='/' className="text-2xl font-bold text-light-secondary dark:text-dark-accent whitespace-pre-line">
+        <Link href='/' className="flex align-middle items-center justify-center text-2xl font-bold text-light-secondary dark:text-dark-accent whitespace-pre-line">
           GILANG
         </Link>
         {/* <motion.button
