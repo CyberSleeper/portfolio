@@ -49,11 +49,28 @@ const Navbar = () => {
     initial: { scale: 1 },
     hover: { scale: 1.1 },
   };
+
+  const [isHovering, setIsHovering] = useState(false)
+
+  const handleHover = () => {
+    setIsHovering(true)
+  }
+
+  const handleMouseLeave = () => {
+    setIsHovering(false)
+  }
+
   return (
     <nav className="z-20 shadow-xl font-satoshi transition-all flex fixed top-0 left-0 w-full bg-light-section dark:bg-dark-background scale-95 my-5 px-6 h-16 align-middle justify-between rounded-2xl">
-      <div className="flex gap-6">
-        <Link href='/' className="flex align-middle items-center justify-center text-2xl font-bold text-light-secondary dark:text-dark-accent whitespace-pre-line">
-          GILANG
+      <div className="flex gap-6 align-middle justify-center items-center">
+        <Link onMouseEnter={handleHover} onMouseLeave={handleMouseLeave} href='/' className={`w-32 overflow-hidden flex h-8 transition-all items-center text-2xl font-bold text-light-secondary dark:text-dark-accent whitespace-pre-line`}>
+          <p>G</p>
+          <div 
+            className={`transition-all duration-500 overflow-hidden ${isHovering ? "w-full" : "w-0"}`}
+          >
+            <p>EM</p>
+          </div>
+          <p>ILANG</p>
         </Link>
         {/* <motion.button
           onClick={toggle}

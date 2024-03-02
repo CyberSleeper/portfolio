@@ -56,15 +56,15 @@ export default function About() {
       <div className="flex mt-10 gap-16">
         <div className="w-3/5">
           <FadeIn>
-            <div className="text-2xl text-white opacity-50 whitespace-pre-line">
+            <div className="text-2xl text-white opacity-50 whitespace-pre-line text-justify">
               Hello, I am Mahartha Gemilang but people usually call me Gilang. I am an undergraduate computer 
-              science student from University of Indonesia. As an undergraduate student, I always seek the 
+              science student at University of Indonesia. As an undergraduate student, I always seek the 
               opportunity to learn new things everyday.
             </div>
           </FadeIn>
             <br/>
           <FadeIn>
-            <div className="text-2xl text-white opacity-50 whitespace-pre-line">
+            <div className="text-2xl text-white opacity-50 whitespace-pre-line text-justify">
               I like to solve new problems and learn new things from 
               it. I do web development eagerly while maintaining my competitive programming skill in my free 
               time. I have participated in numerous competitive programming contests and authored many 
