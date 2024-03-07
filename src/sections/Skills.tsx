@@ -169,7 +169,7 @@ export default function Skills() {
           {
             skills.map((skill, index) => (
               <div key={index} className="select-none flex justify-center items-center ml-16 h-full w-max align-middle" onMouseEnter={() => handleSetSkill(skill.alt)} onMouseLeave={handleClearSkill}>
-                <img src={skill.src} draggable='false' alt="skill" width={100} height={100} />
+                <Image src={skill.src} draggable='false' alt="skill" width={100} height={100} />
               </div>
             ))
           }
@@ -178,7 +178,7 @@ export default function Skills() {
           {
             skills.map((skill, index) => (
               <div key={index} className="flex justify-center items-center ml-16 h-full w-max align-middle" onMouseEnter={() => handleSetSkill(skill.alt)} onMouseLeave={handleClearSkill}>
-                <img src={skill.src} draggable='false' alt="skill" width={100} height={100} />
+                <Image src={skill.src} draggable='false' alt="skill" width={100} height={100} />
               </div>
             ))
           }
