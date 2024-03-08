@@ -42,10 +42,33 @@ const ContactInfo = () => {
 
 const ContactForm = () => {
   return (
-    <div className="w-2/3 bg-dark-darkGrey h-[80vh] shadow-2xl rounded-xl pl-36 pr-12 py-12 text-3xl font-bold text-dark-text">
-      Get in Touch
+    <div className="w-2/3 bg-dark-darkGrey h-[80vh] shadow-2xl rounded-xl pl-36 pr-12 py-12 text-dark-text">
+      <h2 className="text-3xl font-bold">Get in Touch</h2>
+      <form className="mt-12 flex flex-col gap-6">
+        <input
+          type="text"
+          placeholder="Name"
+          className="w-full px-4 py-2 rounded-bl-xl border-b-2 border-gray-300 focus:outline-none focus:border-dark-accent bg-dark-darkGrey text-white"
+        />
+        <input
+          type="email"
+          placeholder="Email"
+          className="w-full px-4 py-2 rounded-bl-xl border-b-2 border-gray-300 focus:outline-none focus:border-dark-accent bg-dark-darkGrey text-white"
+        />
+        <textarea
+          placeholder="Hello Gilang!"
+          className="w-full px-4 py-2 rounded-bl-xl border-l-2 border-r-2 rounded-tr-xl border-b-2 border-t-2 border-gray-300 focus:outline-none focus:border-dark-accent bg-dark-darkGrey text-white"
+          rows={6}
+        ></textarea>
+        <button
+          type="submit"
+          className="hover:brightness-75 transition-all w-full px-6 py-3 rounded-lg bg-dark-accent text-white font-bold text-lg hover:bg-dark-accent-hover focus:outline-none"
+        >
+          Send Message
+        </button>
+      </form>
     </div>
-  )
+  );
 }
 
 export default function Contact() {
