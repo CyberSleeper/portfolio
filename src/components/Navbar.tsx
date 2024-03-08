@@ -1,7 +1,7 @@
 import ThemeContext from "@/contexts/ThemeContext"
 import { useContext, useState } from "react";
 import Link from 'next/link'
-import { motion } from "framer-motion";
+import { GiHamburgerMenu } from "react-icons/gi";
 import gsap from "gsap";
 import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
 gsap.registerPlugin(ScrollToPlugin)
@@ -66,7 +66,7 @@ const ContactLink = ({
       onMouseLeave={handleMouseLeave}
       className={`
         before:absolute before:h-[500%] before:-z-10 before:transition-all before:duration-300
-        relative overflow-hidden text-xl flex justify-center align-middle items-center transition-all duration-500 rounded-lg
+        relative overflow-hidden text-xl flex justify-center align-middle items-center transition-all duration-500 rounded-lg px-3
         after:absolute after:inset-0.5 after:bg-dark-background after:rounded-lg after:-z-10
         ${isHovered ? 
           "before:w-[30%] py-2 before:bg-gradient-to-r from-dark-primary via-dark-accent to-dark-text before:animate-spin-slow-5 cursor-pointer tracking-widest font-bold text-dark-accent"
@@ -85,10 +85,6 @@ const ContactLink = ({
 
 const Navbar = () => {
   const { dark, toggle } = useContext(ThemeContext);
-  const buttonVariants = {
-    initial: { scale: 1 },
-    hover: { scale: 1.1 },
-  };
 
   const [isHovering, setIsHovering] = useState(false)
 
@@ -100,7 +96,14 @@ const Navbar = () => {
     setIsHovering(false)
   }
 
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const handleMobileMenuToggle = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
   return (
+    <nav>
     <nav className="z-20 shadow-xl font-satoshi transition-all flex fixed top-0 left-0 w-full bg-light-section dark:bg-dark-background scale-95 my-5 px-6 h-16 align-middle items-center justify-between rounded-2xl">
       <div className="flex gap-6 align-middle justify-center items-center">
         <Link onMouseEnter={handleHover} onMouseLeave={handleMouseLeave} href='/' className={`w-32 overflow-hidden flex h-8 transition-all items-center text-2xl font-bold text-light-secondary dark:text-dark-accent whitespace-pre-line`}>
@@ -112,26 +115,38 @@ const Navbar = () => {
           </div>
           <p>ILANG</p>
         </Link>
-        {/* <motion.button
-          onClick={toggle}
-          className="flex align-middle items-center text-xl bg-light-secondary dark:bg-dark-secondary rounded-full w-14 transition-all px-2"
-          variants={buttonVariants}
-          initial="initial"
-          whileHover="hover"
-        >
-          <div className="rounded-full w-4 h-4 bg-light-primary dark:bg-dark-primary transition-all ml-0 dark:ml-6" />
-        </motion.button> */}
       </div>
-      <div className="flex flex-row align-middle items-center gap-12">
+      <div className="flex-row align-middle items-center gap-12 hidden md:flex">
         <NavLink href="#about">About</NavLink>
         <NavLink href="#skills">Skills</NavLink>
         <NavLink href="#experience">Experience</NavLink>
       </div>
-      <div className="w-28">
+      <div className="w-28 hidden md:flex items-center justify-center">
         <ContactLink href="#contact">Contact</ContactLink>
       </div>
+      <div className="md:hidden md:scale-0">
+        <button
+          className="text-2xl text-light-secondary dark:text-dark-text hover:cursor-pointer"
+          onClick={handleMobileMenuToggle}
+        >
+          <GiHamburgerMenu />
+        </button>
+      </div>
     </nav>
-  )
+    {/* {isMobileMenuOpen && ( */}
+      <div className={`z-20 top-0 md:hidden fixed w-full h-full bg-black bg-opacity-90 transition-all duration-700 flex items-center justify-center ${isMobileMenuOpen ? "bottom-0" : "-top-full opacity-0"}`} onClick={handleMobileMenuToggle}>
+        <div className="flex flex-col gap-8 items-center">
+          <NavLink href="#about">About</NavLink>
+          <NavLink href="#skills">Skills</NavLink>
+          <NavLink href="#experience">Experience</NavLink>
+          <div className="border-2 border-white px-3 rounded-md">
+            <NavLink href="#contact">Contact</NavLink>
+          </div>
+        </div>
+      </div>
+    {/* )} */}
+    </nav>
+  );
 }
 
 export default Navbar
