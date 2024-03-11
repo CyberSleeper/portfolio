@@ -134,7 +134,7 @@ const Navbar = () => {
       </div>
     </nav>
     {/* {isMobileMenuOpen && ( */}
-      <div className={`z-20 top-0 md:hidden fixed w-full h-full bg-black bg-opacity-90 transition-all duration-700 flex items-center justify-center ${isMobileMenuOpen ? "bottom-0" : "-top-full opacity-0"}`} onClick={handleMobileMenuToggle}>
+      <div className={`z-20 md:hidden fixed w-full h-full bg-black bg-opacity-90 transition-all duration-700 flex items-center justify-center ${isMobileMenuOpen ? "top-0" : "-top-full"}`} onClick={handleMobileMenuToggle}>
         <div className="flex flex-col gap-8 items-center">
           <NavLink href="#about">About</NavLink>
           <NavLink href="#skills">Skills</NavLink>
