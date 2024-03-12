@@ -1,6 +1,6 @@
 import * as THREE from 'three'
 import * as React from 'react'
-import { useRef, useState, useLayoutEffect } from 'react'
+import { useRef, useState, useLayoutEffect, useEffect } from 'react'
 import { Canvas, useFrame, useLoader, useThree } from '@react-three/fiber'
 import ThemeContext from '@/contexts/ThemeContext'
 import OrbitControls from '@/components/orbitControls'
@@ -11,6 +11,8 @@ import Skills from '@/sections/Skills'
 import Experience from '@/sections/Experience'
 import Contact from '@/sections/Contact'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+import { gsap } from 'gsap';
+
 
 interface objProps {
   horizontal?: boolean
@@ -131,12 +133,19 @@ function Light(props: JSX.IntrinsicElements['mesh']) {
   )
 }
 
-function Model() {
+function Model({ isMobile }: { isMobile: boolean }) {
   const [mouse, setMouse] = useState({ x: 0, y: 0 })
   const gltf = useLoader(GLTFLoader, 'three_models/suicopath.glb');
 
   // Set custom position
-  gltf.scene.position.set(3, -2, 0);
+  const defaultY = (isMobile ? -1 : -1.3);
+
+  if (isMobile){
+    gltf.scene.position.set(2, defaultY, 0);
+    gltf.scene.scale.set(0.7, 0.7, 0.7);
+  }else{
+    gltf.scene.position.set(3, defaultY, 0.4);
+  }
   useLayoutEffect(() => {
     gltf.scene.rotation.set(0, 0, 0);
   }, []);
@@ -148,7 +157,7 @@ function Model() {
   });
 
   useFrame((state, delta) => {
-    gltf.scene.position.y = Math.sin(state.clock.getElapsedTime()) * 0.2 - 1.5
+    gltf.scene.position.y = Math.sin(state.clock.getElapsedTime()) * 0.2 + defaultY
   })
 
   useLayoutEffect(() => {
@@ -193,24 +202,32 @@ export default function App() {
               {/* <Box position={[-0.4, 0, 1]} scale={0.5} speed={1} delta={{ x: 0, y: 0.01, z: 0 }} color={meshColor} />
               <Tetra position={[0, 0, -0.5]} scale={0.6} speed={1.4} delta={{ x: -0.01, y: 0, z: 0 }} color={meshColor} />
               <Sphere position={[0.8, -2, 0]} scale={0.3} speed={0.8} delta={{ x: 0.017, y: -0.0001, z: 0.0007 }} color={meshColor} /> */}
-              <Model />
+              <Model isMobile={true} />
+              <mesh rotation={[-Math.PI/3, 0, 0]} receiveShadow={true} position={[0, 0, -3.5]}>
+                <planeGeometry args={[20, 20, 32, 32]} />
+                <meshStandardMaterial color={planeColor} />
+              </mesh>
+              <mesh receiveShadow={true} position={[0, 0, -1.5]}>
+                <planeGeometry args={[20, 20, 32, 32]} />
+                <meshStandardMaterial color={planeColor} />
+              </mesh>
             </>
           ) : (
             <>
               {/* <Box position={[3.2, 0, 1]} scale={0.5} speed={1} delta={{ x: 0, y: 0.01, z: 0 }} color={meshColor} />
               <Tetra position={[3, 0, -0.5]} scale={0.6} speed={1.4} delta={{ x: -0.01, y: 0, z: 0 }} color={meshColor} />
               <Sphere position={[3.8, -2, 0]} scale={0.3} speed={0.8} delta={{ x: 0.017, y: -0.0001, z: 0.0007 }} color={meshColor} /> */}
-              <Model />
+              <Model isMobile={false}/>
+              <mesh rotation={[-Math.PI/3, 0, 0]} receiveShadow={true} position={[0, 0, -3.5]}>
+                <planeGeometry args={[20, 20, 32, 32]} />
+                <meshStandardMaterial color={planeColor} />
+              </mesh>
+              <mesh receiveShadow={true} position={[0, 0, -1.5]}>
+                <planeGeometry args={[20, 20, 32, 32]} />
+                <meshStandardMaterial color={planeColor} />
+              </mesh>
             </>
           )}
-          <mesh rotation={[-Math.PI/3, 0, 0]} receiveShadow={true} position={[0, 0, -3.5]}>
-            <planeGeometry args={[20, 20, 32, 32]} />
-            <meshStandardMaterial color={planeColor} />
-          </mesh>
-          <mesh receiveShadow={true} position={[0, 0, -1.5]}>
-            <planeGeometry args={[20, 20, 32, 32]} />
-            <meshStandardMaterial color={planeColor} />
-          </mesh>
           {/* <OrbitControls /> */}
         </Canvas>
       </div>
@@ -237,7 +254,3 @@ export default function App() {
     </div>
   )
 }
-function useEffect(arg0: () => void, arg1: never[]) {
-  throw new Error('Function not implemented.')
-}
-
