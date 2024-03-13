@@ -161,15 +161,15 @@ export default function Skills() {
         <h1 className={`text-4xl font-bold h-full transition-all duration-500 ${showSkill ? 'opacity-100' : 'opacity-0'}`}>{skill}</h1>
       </div> */}
       <div 
-        className="flex w-full py-12 [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-200px),transparent_100%)]"
+        className="flex w-full md:py-12 py-4 md:[mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-200px),transparent_100%)]"
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
         <div className={`flex ${isHovering && 'pause'} select-none animate-marquee-infinite`}>
           {
             skills.map((skill, index) => (
-              <div key={index} className="select-none flex justify-center items-center ml-16 h-full w-max align-middle" onMouseEnter={() => handleSetSkill(skill.alt)} onMouseLeave={handleClearSkill}>
-                <Image src={skill.src} draggable='false' alt="skill" width={100} height={100} />
+              <div key={index} className="select-none flex justify-center items-center md:ml-16 ml-8 h-full w-max align-middle" onMouseEnter={() => handleSetSkill(skill.alt)} onMouseLeave={handleClearSkill}>
+                <Image className='md:w-28 w-16' src={skill.src} draggable='false' alt="skill" width={100} height={100} />
               </div>
             ))
           }
@@ -177,8 +177,8 @@ export default function Skills() {
         <div className={`flex ${isHovering && 'pause'} select-none animate-marquee-infinite`}>
           {
             skills.map((skill, index) => (
-              <div key={index} className="flex justify-center items-center ml-16 h-full w-max align-middle" onMouseEnter={() => handleSetSkill(skill.alt)} onMouseLeave={handleClearSkill}>
-                <Image src={skill.src} draggable='false' alt="skill" width={100} height={100} />
+              <div key={index} className="select-none flex justify-center items-center md:ml-16 ml-8 h-full w-max align-middle" onMouseEnter={() => handleSetSkill(skill.alt)} onMouseLeave={handleClearSkill}>
+                <Image className='md:w-28 w-16' src={skill.src} draggable='false' alt="skill" width={100} height={100} />
               </div>
             ))
           }
