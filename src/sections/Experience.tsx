@@ -148,9 +148,13 @@ interface BulletPointProps {
 const BulletPoint: React.FC<BulletPointProps> = ({ index, children }) => {
   const BulletStyle = bulletStyles[index % bulletStyles.length];
   return (
-    <div className="flex mb-2 gap-3">
-      <BulletStyle size={18} className="mt-1" />
-      {children}
+    <div className="flex mb-2 md:gap-2 gap-1 md:text-lg text-sm items-center">
+      <div className="floatleft md:w-4 w-4">
+        <BulletStyle size={30} className="mt-1 w-full h-auto aspect-square" />
+      </div>
+      <div className="w-fit float-right">
+        {children}
+      </div>
     </div>
   );
 };
@@ -160,9 +164,9 @@ export default function Experience() {
   const [bulletIdx, setBulletIdx] = useState(0)
 
   return (
-    <div className="transition-all min-h-screen font-satoshi pb-24 bg-light-background dark:bg-dark-background px-24 pt-16 flex flex-col">
+    <div className=" transition-all min-h-screen font-satoshi pb-24 bg-dark-background md:px-24 px-12 pt-16 flex flex-col">
       <FadeIn>
-        <h1 className="text-5xl font-bold text-light-secondary dark:text-dark-secondary">My Experience</h1>
+        <h1 className="md:text-5xl text-3xl font-bold text-light-secondary dark:text-dark-secondary">My Experience</h1>
       </FadeIn>
       <div className="flex h-max">
         <div className="w-4 h-max bg-red-500"/>
@@ -171,11 +175,11 @@ export default function Experience() {
             experiences.map((experience, index) => (
               <HighlightOnScroll key={index}>
                 <div className="mt-12">
-                  <h1 className="text-3xl font-bold text-light-text dark:text-dark-text">{experience.position}</h1>
-                  <h2 className="text-xl font-bold text-light-accent dark:text-dark-accent">
+                  <h1 className="md:text-3xl text-2xl font-bold text-light-text dark:text-dark-text">{experience.position}</h1>
+                  <h2 className="md:text-xl text-lg font-bold text-light-accent dark:text-dark-accent">
                     <a href={experience.company.website} target="_blank" rel="noreferrer" className="hover:underline">{experience.company.name}</a>
                   </h2>
-                  <h3 className="text-lg font-bold text-light-text dark:text-dark-text opacity-30">{experience.start_date} - {experience.end_date}</h3>
+                  <h3 className="md:text-xl text-lg font-bold text-light-text dark:text-dark-text opacity-30">{experience.start_date} - {experience.end_date}</h3>
                   <div className="mt-4">
                     {
                       experience.descriptions.map((description, index) => (

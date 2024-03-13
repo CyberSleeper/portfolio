@@ -242,10 +242,10 @@ export default function App() {
       <section id='about'>
         <About />
       </section>
-      <section id='skills'>
+      <section id='skills' className='-my-3'>
         <Skills />
       </section>
-      <section id='experience'>
+      <section id='experience' className='-my-3'>
         <Experience />
       </section>
       <section id='contact'>
