@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import emailjs from '@emailjs/browser'
-import { error } from "console";
+import { ImSpinner9 } from "react-icons/im";
 
 const ContactItem = ({ src, alt, link }: { src: string, alt: string, link: string }) => {
   const [isHovered, setIsHovered] = useState(false)
@@ -58,10 +58,11 @@ const ContactForm = () => {
     console.log("first")
     setIsLoading(true)
     if (name && email && message) {
-      const serviceId = process.env.EMAILJS_SERVICE_ID || "";
-      const templateId = process.env.EMAILJS_TEMPLATE_ID || "";
-      console.log(serviceId, templateId)
-      emailjs.sendForm(serviceId, templateId, e.currentTarget as HTMLFormElement)
+      const serviceId = "default_service";
+      const templateId = "template_mzrslqd";
+      const publicKey = "nxb5Ffrs9zY0zgHFI";
+      console.log(serviceId, templateId, publicKey)
+      emailjs.sendForm(serviceId, templateId, e.currentTarget, publicKey)
       .then((result) => {
         setToastMessage("Message sent successfully!")
         setToastStatus("success")
@@ -70,15 +71,17 @@ const ContactForm = () => {
         setName("")
         setEmail("")
         setMessage("")
+        setIsLoading(false)
       }, (error) => {
         setToastMessage("Failed to send message!")
         setToastStatus("error")
         setShowToast(true)
         console.log("Error")
+        console.log(error)
         setTimeout(() => setShowToast(false), 3000)
+        setIsLoading(false)
       })
     }
-    setIsLoading(false)
   }
 
   return (
@@ -87,41 +90,56 @@ const ContactForm = () => {
       <form className="mt-12 flex flex-col gap-6" onSubmit={handleSubmit}>
         <input
           id="id_name"
+          name="user_name"
           required
           type="text"
           placeholder="Name"
-          className="w-full px-4 py-2 rounded-bl-xl border-b-2 border-gray-300 focus:outline-none focus:border-dark-accent bg-dark-darkGrey text-white"
+          className="transition-colors w-full px-4 py-2 rounded-bl-xl border-b-2 border-gray-300 focus:outline-none focus:border-dark-accent bg-dark-darkGrey text-white"
           onChange={(e) => setName(e.target.value)}
+          value={name}
         />
         <input
           id="id_email"
+          name="user_email"
           required
           type="email"
           placeholder="Email"
-          className="w-full px-4 py-2 rounded-bl-xl border-b-2 border-gray-300 focus:outline-none focus:border-dark-accent bg-dark-darkGrey text-white"
+          className="transition-colors w-full px-4 py-2 rounded-bl-xl border-b-2 border-gray-300 focus:outline-none focus:border-dark-accent bg-dark-darkGrey text-white"
           onChange={(e) => setEmail(e.target.value)}
+          value={email}
         />
         <textarea
           id="id_message"
+          name="message"
           required
           placeholder="Hello Gilang!"
-          className="w-full px-4 py-2 rounded-bl-xl border-l-2 border-r-2 rounded-tr-xl border-b-2 border-t-2 border-gray-300 focus:outline-none focus:border-dark-accent bg-dark-darkGrey text-white"
+          className="transition-colors w-full px-4 py-2 rounded-bl-xl border-l-2 border-r-2 rounded-tr-xl border-b-2 border-t-2 border-gray-300 focus:outline-none focus:border-dark-accent bg-dark-darkGrey text-white"
           rows={6}
           onChange={(e) => setMessage(e.target.value)}
+          value={message}
         ></textarea>
         <button
+          disabled={isLoading}
           type="submit"
-          className={`hover:brightness-75 ${isLoading && 'opacity-70'} transition-all w-full px-6 py-3 rounded-lg bg-dark-accent text-white font-bold text-lg hover:bg-dark-accent-hover focus:outline-none`}
+          className={`hover:brightness-90 disabled:opacity-50 transition-all w-full px-6 py-3 rounded-lg bg-dark-accent text-white font-bold text-lg hover:bg-dark-accent-hover focus:outline-none`}
         >
-          {isLoading ? "Sending..." : "Send Message"}
+          {isLoading ? 
+            <div className="flex justify-center items-center">
+              <ImSpinner9 className="animate-spin"/>
+            </div>
+          :
+            <p>Send Message</p>
+          }
         </button>
       </form>
 
-      <div className={`font-bold fixed right-8 ${showToast ? 'bottom-8' : '-bottom-16'} transition-all text-dark-text px-6 py-3 rounded-lg shadow-2xl
-        ${showToast ? 'before:scale-x-0 before:duration-[2900ms] delay-100' : 'before:delay-200 before:scale-x-100'} before:-mx-6 before:-my-3 before:transition-transform before:scale-y-125 ${toastStatus==='success' ? 'before:bg-dark-accent' : 'before:bg-red-400'} before:-z-20 before:w-full before:h-full before:absolute before:rounded-lg before:transform
-        after:bg-dark-primary after:-z-10 after:w-full after:h-full after:absolute after:top-0 after:left-0 after:rounded-lg after:transform after:transition-all
-      `}>
-        {toastMessage}
+      <div className={`flex justify-center items-center align-middle fixed bottom-8 right-8 ${showToast ? 'bottom-8' : '-bottom-16'} transition-all`}>
+        <div className={`flex justify-center items-center align-middle relative bg-slate-950 z-30 font-bold text-lg px-6 duration-300 py-4 text-dark-text rounded-xl shadow-2xl
+          ${showToast ? 'after:scale-x-0 after:duration-[2900ms] delay-100' : 'after:delay-200 after:scale-x-100'} after:transition-transform ${toastStatus==='success' ? 'after:bg-green-400' : 'after:bg-red-400'} after:-z-20 after:w-full after:h-full after:absolute after:rounded-lg after:transform
+          before:bg-dark-background before:brightness-50 before:-z-10 before:w-full before:inset-2 before-h-full before:absolute before:left-0 before:rounded-2xl before:transform before:transition-all
+        `}>
+          {toastMessage}
+        </div>
       </div>
     </div>
   );
