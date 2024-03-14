@@ -148,9 +148,9 @@ interface BulletPointProps {
 const BulletPoint: React.FC<BulletPointProps> = ({ index, children }) => {
   const BulletStyle = bulletStyles[index % bulletStyles.length];
   return (
-    <div className="flex mb-2 md:gap-2 gap-1 md:text-lg text-sm items-center">
-      <div className="floatleft md:w-4 w-4">
-        <BulletStyle size={30} className="mt-1 w-full h-auto aspect-square" />
+    <div className="flex mb-2 md:gap-1 gap-0.5 md:text-lg text-sm">
+      <div className="floatleft md:h-7 h-5 w-auto flex items-center align-middle aspect-square">
+        <BulletStyle size={30} className="md:w-6 w-4 h-auto aspect-square" />
       </div>
       <div className="w-fit float-right">
         {children}
@@ -161,8 +161,6 @@ const BulletPoint: React.FC<BulletPointProps> = ({ index, children }) => {
 
 
 export default function Experience() {
-  const [bulletIdx, setBulletIdx] = useState(0)
-
   return (
     <div className=" transition-all min-h-screen font-satoshi pb-24 bg-dark-background md:px-24 px-12 pt-16 flex flex-col">
       <FadeIn>
@@ -174,7 +172,7 @@ export default function Experience() {
           {
             experiences.map((experience, index) => (
               <HighlightOnScroll key={index}>
-                <div className="mt-12">
+                <div className="md:mt-14 mt-20">
                   <h1 className="md:text-3xl text-2xl font-bold text-light-text dark:text-dark-text">{experience.position}</h1>
                   <h2 className="md:text-xl text-lg font-bold text-light-accent dark:text-dark-accent">
                     <a href={experience.company.website} target="_blank" rel="noreferrer" className="hover:underline">{experience.company.name}</a>
