@@ -5,14 +5,15 @@ import { Canvas, useFrame, useLoader, useThree } from '@react-three/fiber'
 import ThemeContext from '@/contexts/ThemeContext'
 import OrbitControls from '@/components/orbitControls'
 import { useMediaQuery } from 'react-responsive';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+import { gsap } from 'gsap';
+
 import Hero from '@/sections/Hero'
 import About from '@/sections/About'
 import Skills from '@/sections/Skills'
 import Experience from '@/sections/Experience'
 import Contact from '@/sections/Contact'
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
-import { gsap } from 'gsap';
-
+import Footer from '@/sections/Footer'
 
 interface objProps {
   horizontal?: boolean
@@ -250,6 +251,9 @@ export default function App() {
       </section>
       <section id='contact'>
         <Contact />
+      </section>
+      <section id='footer'>
+        <Footer />
       </section>
     </div>
   )
