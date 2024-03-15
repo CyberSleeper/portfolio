@@ -25,10 +25,10 @@ export default function Hero() {
     <section className="font-satoshi min-h-screen">
       <div className='flex flex-col justify-center h-screen md:px-24 px-8'>
         <div className='flex flex-col'>
-          <FadeIn duration={2} ease="bounce.out">
+          <FadeIn duration={2} ease="bounce.out" delay={1}>
             <h2 className='tracking-tight md:text-6xl text-3xl outline-dark-text outline-4'>Mahartha Gemilang</h2>
           </FadeIn>
-          <h1 style={{ WebkitTextFillColor: 'transparent' }} className={`transition-all delay-[2000ms] duration-[1000ms] tracking-tight mb-8 md:h-52 h-32 md:text-8xl text-6xl font-bold whitespace-pre-line bg-clip-text bg-gradient-to-br from-dark-accent to-dark-primary ${isLoaded ? '' : 'opacity-0'}`}>
+          <h1 style={{ WebkitTextFillColor: 'transparent' }} className={`transition-all delay-[3000ms] duration-[1000ms] tracking-tight mb-8 md:h-52 h-32 md:text-8xl text-6xl font-bold whitespace-pre-line bg-clip-text bg-gradient-to-br from-dark-accent to-dark-primary ${isLoaded ? '' : 'opacity-0'}`}>
             <TypeAnimation
               sequence={roles}
               wrapper="span"
@@ -37,7 +37,7 @@ export default function Hero() {
             />
           </h1>
           <div className="flex md:w-auto gap-4">
-            <FadeIn delay={3} duration={0.5}>
+            <FadeIn delay={4} duration={0.5}>
               <div
                 className="text-center md:text-xl text-lg md:px-6 px-5 md:py-4 py-3 md:w-fit rounded-xl text-black bg-dark-primary hover:bg-dark-accent font-bold hover:cursor-pointer hover:scale-105 active:scale-90 transition-all"
                 onClick={() => {
@@ -47,7 +47,7 @@ export default function Hero() {
                 Learn More
               </div>
             </FadeIn>
-            <FadeIn delay={3.5} duration={0.5}>
+            <FadeIn delay={4.5} duration={0.5}>
               <Link
                 href='https://drive.google.com/file/d/1Wl3PkP8tsxTe8lMkubiJAin6k3URnJ7p/view?usp=sharing'
                 target="_blank"

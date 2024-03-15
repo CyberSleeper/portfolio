@@ -108,7 +108,7 @@ const Navbar = () => {
 
   return (
     <>
-    <nav className={`${isLoaded ? 'top-0 delay-[4000ms]' : '-top-24'} duration-[2000ms] z-50 shadow-xl font-satoshi transition-all flex fixed left-0 w-full bg-dark-background scale-95 my-5 px-6 h-16 align-middle items-center justify-between rounded-2xl`}>
+    <nav className={`${isLoaded ? 'top-0 delay-[5000ms]' : '-top-24'} duration-[2000ms] z-50 shadow-xl font-satoshi transition-all flex fixed left-0 w-full bg-dark-background scale-95 my-5 px-6 h-16 align-middle items-center justify-between rounded-2xl`}>
       <div className="flex gap-6 align-middle justify-center items-center">
         <Link onMouseEnter={handleHover} onMouseLeave={handleMouseLeave} href='/' className={`w-32 overflow-hidden flex h-8 transition-all items-center text-2xl font-bold text-dark-accent whitespace-pre-line`}>
           <p>G</p>

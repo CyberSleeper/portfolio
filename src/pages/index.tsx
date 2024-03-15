@@ -8,6 +8,8 @@ import { useMediaQuery } from 'react-responsive';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { gsap } from 'gsap';
 
+import { PiAsteriskDuotone } from "react-icons/pi";
+
 import Hero from '@/sections/Hero'
 import About from '@/sections/About'
 import Skills from '@/sections/Skills'
@@ -197,6 +199,13 @@ export default function App() {
 
   return (
     <div className='min-h-screen w-full'>
+      <div className={`delay-[850ms] fixed transition-all duration-1000 bg-dark-background h-screen w-full flex justify-center items-center ${isLoaded ? '-bottom-full' : 'bottom-0'}`}>
+        <div className='animate-spin-slow-10'>
+          <span className='animate-pulse'>
+            <PiAsteriskDuotone size={70}/>
+          </span>
+        </div>
+      </div>
       <div className='-z-10 h-screen w-full top-0 left-0 fixed'>
         {isLoaded &&
           <Canvas className=' w-full h-screen bg-dark-background' shadows>
