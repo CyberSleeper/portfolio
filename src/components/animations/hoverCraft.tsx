@@ -2,12 +2,12 @@ import Image from "next/image";
 import React from "react";
 import { useRef } from "react";
 
-const HoverCraft = ({src, alt, width, height}: {src: string, alt: string, width: number, height: number}) => {
-  const imageRef = useRef(null);
+const HoverCraft = ({children}: {children: React.ReactNode}) => {
+  const hoverRef = useRef(null);
   const [isHovered, setIsHovered] = React.useState(false);
   
   const handleMouseMove = (e: any) => {
-    const ref = imageRef.current;
+    const ref = hoverRef.current;
     if (!ref) return;
     const el = ref as HTMLElement;
     const { left, top, width, height } = el.getBoundingClientRect();
@@ -26,13 +26,8 @@ const HoverCraft = ({src, alt, width, height}: {src: string, alt: string, width:
   }
 
   return (
-    <Image
-      ref={imageRef}
-      src={src}
-      alt={alt}
-      width={width}
-      height={height}
-      className="rounded-2xl aspect-square transition-transform duration-100"
+    <div
+      ref={hoverRef}
       style={{
         transformStyle: 'preserve-3d',
         transform: `${ isHovered || 'perspective(500px) rotateY(0deg) rotateX(0deg)'} `,
@@ -40,7 +35,10 @@ const HoverCraft = ({src, alt, width, height}: {src: string, alt: string, width:
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       onMouseEnter={handleMouseEnter}
-    />
+      className="transition-transform duration-100"
+    >
+      {children}
+    </div>
   )
 }
 

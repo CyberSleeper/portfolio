@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import emailjs from '@emailjs/browser'
 import { ImSpinner9 } from "react-icons/im";
+import HoverCraft from "@/components/animations/hoverCraft";
 
 const ContactItem = ({ src, alt, link }: { src: string, alt: string, link: string }) => {
   const [isHovered, setIsHovered] = useState(false)
@@ -94,7 +95,7 @@ const ContactForm = () => {
           required
           type="text"
           placeholder="Name"
-          className="transition-colors w-full px-4 py-2 rounded-bl-xl border-b-2 border-gray-300 focus:outline-none focus:border-dark-accent bg-dark-darkGrey text-white"
+          className="transition-colors duration-500 w-full px-4 py-2 rounded-bl-xl border-b-2 border-gray-300 focus:outline-none focus:border-dark-accent bg-dark-darkGrey text-white"
           onChange={(e) => setName(e.target.value)}
           value={name}
         />
@@ -104,7 +105,7 @@ const ContactForm = () => {
           required
           type="email"
           placeholder="Email"
-          className="transition-colors w-full px-4 py-2 rounded-bl-xl border-b-2 border-gray-300 focus:outline-none focus:border-dark-accent bg-dark-darkGrey text-white"
+          className="transition-colors duration-500 w-full px-4 py-2 rounded-bl-xl border-b-2 border-gray-300 focus:outline-none focus:border-dark-accent bg-dark-darkGrey text-white"
           onChange={(e) => setEmail(e.target.value)}
           value={email}
         />
@@ -113,7 +114,7 @@ const ContactForm = () => {
           name="message"
           required
           placeholder="Hello Gilang!"
-          className="transition-colors w-full px-4 py-2 rounded-bl-xl border-l-2 border-r-2 rounded-tr-xl border-b-2 border-t-2 border-gray-300 focus:outline-none focus:border-dark-accent bg-dark-darkGrey text-white"
+          className="transition-colors duration-500 w-full px-4 py-2 rounded-bl-xl border-l-2 border-r-2 rounded-tr-xl border-b-2 border-t-2 border-gray-300 focus:outline-none focus:border-dark-accent bg-dark-darkGrey text-white"
           rows={6}
           onChange={(e) => setMessage(e.target.value)}
           value={message}
@@ -133,7 +134,7 @@ const ContactForm = () => {
         </button>
       </form>
 
-      <div className={`flex justify-center items-center align-middle fixed bottom-8 right-8 ${showToast ? 'bottom-8' : '-bottom-16'} transition-all`}>
+      <div className={`flex justify-center items-center align-middle fixed right-8 ${showToast ? 'bottom-8' : '-bottom-16'} transition-all`}>
         <div className={`flex justify-center items-center align-middle relative bg-slate-950 z-30 font-bold text-lg px-6 duration-300 py-4 text-dark-text rounded-xl shadow-2xl
           ${showToast ? 'after:scale-x-0 after:duration-[2900ms] delay-100' : 'after:delay-200 after:scale-x-100'} after:transition-transform ${toastStatus==='success' ? 'after:bg-green-400' : 'after:bg-red-400'} after:-z-20 after:w-full after:h-full after:absolute after:rounded-lg after:transform
           before:bg-dark-background before:brightness-50 before:-z-10 before:w-full before:inset-2 before-h-full before:absolute before:left-0 before:rounded-2xl before:transform before:transition-all
@@ -152,7 +153,13 @@ export default function Contact() {
         <h1 className="text-5xl font-bold text-light-secondary dark:text-dark-secondary">Contact Me!</h1>
       </FadeIn> */}
       <div className="flex items-center justify-center md:flex-row flex-col-reverse">
-        <ContactInfo />
+        <FadeIn>
+          <HoverCraft
+            
+          >
+            <ContactInfo />
+          </HoverCraft>
+        </FadeIn>
         <ContactForm />
       </div>
       
