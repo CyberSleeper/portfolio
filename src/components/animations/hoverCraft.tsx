@@ -13,7 +13,6 @@ const HoverCraft = ({children}: {children: React.ReactNode}) => {
     const { left, top, width, height } = el.getBoundingClientRect();
     const x = (e.clientX - left) / width - 0.5;
     const y = (e.clientY - top) / height - 0.5;
-    console.log(x, y)
     el.style.transform = `perspective(500px) rotateY(${x * 10}deg) rotateX(${y * -10}deg)`;
   }
   
@@ -35,7 +34,7 @@ const HoverCraft = ({children}: {children: React.ReactNode}) => {
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       onMouseEnter={handleMouseEnter}
-      className="transition-transform duration-100"
+      className={`${isHovered || 'transition-all'}`}
     >
       {children}
     </div>

@@ -51,7 +51,7 @@ export default function About() {
       }}
     >
       <FadeIn>
-        <h1 className="md:text-5xl text-3xl font-bold text-light-text dark:text-dark-text">About Me</h1>
+        <h1 className="md:text-5xl flex justify-center text-3xl font-bold text-light-text dark:text-dark-text">About Me</h1>
       </FadeIn>
       <div className="flex mt-10 md:gap-16 gap-4 md:flex-row flex-col-reverse items-center">
         <div className="md:w-3/5 w-full">

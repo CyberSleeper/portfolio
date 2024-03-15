@@ -23,7 +23,7 @@ export default function FadeIn({ children, delay = 0, ...props }: { children: Re
   })
 
   return (
-    <div ref={el} {...props}>
+    <div className="md:w-auto w-full" ref={el} {...props}>
       {children}
     </div>
   );
