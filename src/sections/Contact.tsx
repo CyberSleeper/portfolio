@@ -133,7 +133,7 @@ const ContactForm = () => {
         <button
           disabled={isLoading}
           type="submit"
-          className={`hover:brightness-90 disabled:opacity-50 transition-all w-full px-6 py-3 rounded-lg bg-dark-accent text-white font-bold text-lg hover:bg-dark-accent-hover focus:outline-none`}
+          className={`hover:brightness-90 active:brightness-50 duration-150 disabled:opacity-50 transition-all w-full px-6 py-3 rounded-lg bg-dark-accent text-white font-bold text-lg hover:bg-dark-accent-hover focus:outline-none`}
         >
           {isLoading ? 
             <div className="flex justify-center items-center">
