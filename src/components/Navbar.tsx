@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { GiHamburgerMenu } from "react-icons/gi";
 import gsap from "gsap";
 import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
+import { useEffect } from "react";
 gsap.registerPlugin(ScrollToPlugin)
 
 const NavLink = ({
@@ -84,9 +85,12 @@ const ContactLink = ({
 }
 
 const Navbar = () => {
-  const { dark, toggle } = useContext(ThemeContext);
-
+  const [isLoaded, setIsLoaded] = useState(false)
   const [isHovering, setIsHovering] = useState(false)
+  
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
 
   const handleHover = () => {
     setIsHovering(true)
@@ -103,8 +107,8 @@ const Navbar = () => {
   };
 
   return (
-    <nav>
-    <nav className="z-20 shadow-xl font-satoshi transition-all flex fixed top-0 left-0 w-full bg-light-section dark:bg-dark-background scale-95 my-5 px-6 h-16 align-middle items-center justify-between rounded-2xl">
+    <>
+    <nav className={`${isLoaded ? 'top-0 delay-[4000ms]' : '-top-24'} duration-[2000ms] z-20 shadow-xl font-satoshi transition-all flex fixed left-0 w-full bg-light-section dark:bg-dark-background scale-95 my-5 px-6 h-16 align-middle items-center justify-between rounded-2xl`}>
       <div className="flex gap-6 align-middle justify-center items-center">
         <Link onMouseEnter={handleHover} onMouseLeave={handleMouseLeave} href='/' className={`w-32 overflow-hidden flex h-8 transition-all items-center text-2xl font-bold text-light-secondary dark:text-dark-accent whitespace-pre-line`}>
           <p>G</p>
@@ -145,7 +149,7 @@ const Navbar = () => {
         </div>
       </div>
     {/* )} */}
-    </nav>
+    </>
   );
 }
 

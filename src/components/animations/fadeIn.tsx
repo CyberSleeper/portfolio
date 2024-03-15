@@ -4,7 +4,18 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
-export default function FadeIn({ children, delay = 0, ...props }: { children: React.ReactNode, delay?: number }) {
+export default function FadeIn({ 
+  children, 
+  duration = 1, 
+  delay = 0, 
+  ease = "sine.in", 
+  ...props 
+}: { 
+  children: React.ReactNode, 
+  duration?: number, 
+  ease?: string, 
+  delay?: number 
+}) {
   const el = useRef(null);
 
   useGSAP(() => {
@@ -15,9 +26,10 @@ export default function FadeIn({ children, delay = 0, ...props }: { children: Re
         end: "bottom 20%",
         toggleActions: "restart none none reverse",
       },
+      ease: ease,
       opacity: 0,
       y: 40,
-      duration: 1,
+      duration: duration,
       delay: delay,
     });
   })
