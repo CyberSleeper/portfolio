@@ -185,69 +185,79 @@ function Model({ isMobile }: { isMobile: boolean }) {
 
 export default function App() {
 
-  const { dark, toggle } = React.useContext(ThemeContext);
   const isMobile = useMediaQuery({ maxWidth: 768 });
+  const [isLoaded, setIsLoaded] = useState(false)
 
-  const planeColor = dark ? '#54709C' : '#DEB596'
-  const meshColor = dark ? '#60C1E3' : '#325A8D'
+  useEffect(() => {
+    setIsLoaded(true)
+  }, [])
+
+  const planeColor = '#54709C'
+  const meshColor = '#60C1E3'
 
   return (
     <div className='min-h-screen w-full'>
-      <div className='h-screen w-full top-0 left-0 fixed -z-10'>
-        <Canvas className='w-full h-screen' shadows>
-          {/* <axesHelper args={[5]} /> */}
-          <ambientLight intensity={0.1} />
-          <Light />
-          {isMobile ? (
-            <>
-              {/* <Box position={[-0.4, 0, 1]} scale={0.5} speed={1} delta={{ x: 0, y: 0.01, z: 0 }} color={meshColor} />
-              <Tetra position={[0, 0, -0.5]} scale={0.6} speed={1.4} delta={{ x: -0.01, y: 0, z: 0 }} color={meshColor} />
-              <Sphere position={[0.8, -2, 0]} scale={0.3} speed={0.8} delta={{ x: 0.017, y: -0.0001, z: 0.0007 }} color={meshColor} /> */}
-              <Model isMobile={true} />
-              <mesh rotation={[-Math.PI/3, 0, 0]} receiveShadow={true} position={[0, 0, -3.5]}>
-                <planeGeometry args={[20, 20, 32, 32]} />
-                <meshStandardMaterial color={planeColor} />
-              </mesh>
-              <mesh receiveShadow={true} position={[0, 0, -1.5]}>
-                <planeGeometry args={[20, 20, 32, 32]} />
-                <meshStandardMaterial color={planeColor} />
-              </mesh>
-            </>
-          ) : (
-            <>
-              {/* <Box position={[3.2, 0, 1]} scale={0.5} speed={1} delta={{ x: 0, y: 0.01, z: 0 }} color={meshColor} />
-              <Tetra position={[3, 0, -0.5]} scale={0.6} speed={1.4} delta={{ x: -0.01, y: 0, z: 0 }} color={meshColor} />
-              <Sphere position={[3.8, -2, 0]} scale={0.3} speed={0.8} delta={{ x: 0.017, y: -0.0001, z: 0.0007 }} color={meshColor} /> */}
-              <Model isMobile={false}/>
-              <mesh rotation={[-Math.PI/3, 0, 0]} receiveShadow={true} position={[0, 0, -3.5]}>
-                <planeGeometry args={[20, 20, 32, 32]} />
-                <meshStandardMaterial color={planeColor} />
-              </mesh>
-              <mesh receiveShadow={true} position={[0, 0, -1.5]}>
-                <planeGeometry args={[20, 20, 32, 32]} />
-                <meshStandardMaterial color={planeColor} />
-              </mesh>
-            </>
-          )}
-          {/* <OrbitControls /> */}
-        </Canvas>
+      <div className='-z-10 h-screen w-full top-0 left-0 fixed'>
+        {isLoaded &&
+          <Canvas className=' w-full h-screen bg-dark-background' shadows>
+            {/* <axesHelper args={[5]} /> */}
+            <ambientLight intensity={0.1} />
+            <Light />
+            {isMobile ? (
+              <>
+                {/* <Box position={[-0.4, 0, 1]} scale={0.5} speed={1} delta={{ x: 0, y: 0.01, z: 0 }} color={meshColor} />
+                <Tetra position={[0, 0, -0.5]} scale={0.6} speed={1.4} delta={{ x: -0.01, y: 0, z: 0 }} color={meshColor} />
+                <Sphere position={[0.8, -2, 0]} scale={0.3} speed={0.8} delta={{ x: 0.017, y: -0.0001, z: 0.0007 }} color={meshColor} /> */}
+                <Model isMobile={true} />
+                <mesh rotation={[-Math.PI/3, 0, 0]} receiveShadow={true} position={[0, 0, -3.5]}>
+                  <planeGeometry args={[20, 20, 32, 32]} />
+                  <meshStandardMaterial color={planeColor} />
+                </mesh>
+                <mesh receiveShadow={true} position={[0, 0, -1.5]}>
+                  <planeGeometry args={[20, 20, 32, 32]} />
+                  <meshStandardMaterial color={planeColor} />
+                </mesh>
+              </>
+            ) : (
+              <>
+                {/* <Box position={[3.2, 0, 1]} scale={0.5} speed={1} delta={{ x: 0, y: 0.01, z: 0 }} color={meshColor} />
+                <Tetra position={[3, 0, -0.5]} scale={0.6} speed={1.4} delta={{ x: -0.01, y: 0, z: 0 }} color={meshColor} />
+                <Sphere position={[3.8, -2, 0]} scale={0.3} speed={0.8} delta={{ x: 0.017, y: -0.0001, z: 0.0007 }} color={meshColor} /> */}
+                <Model isMobile={false}/>
+                <mesh rotation={[-Math.PI/3, 0, 0]} receiveShadow={true} position={[0, 0, -3.5]}>
+                  <planeGeometry args={[20, 20, 32, 32]} />
+                  <meshStandardMaterial color={planeColor} />
+                </mesh>
+                <mesh receiveShadow={true} position={[0, 0, -1.5]}>
+                  <planeGeometry args={[20, 20, 32, 32]} />
+                  <meshStandardMaterial color={planeColor} />
+                </mesh>
+              </>
+            )}
+            {/* <OrbitControls /> */}
+          </Canvas>
+        }
       </div>
-      <Hero />
-      <section id='about'>
-        <About />
-      </section>
-      <section id='skills' className='-my-3'>
-        <Skills />
-      </section>
-      <section id='experience' className='-my-3'>
-        <Experience />
-      </section>
-      <section id='contact'>
-        <Contact />
-      </section>
-      <section id='footer'>
-        <Footer />
-      </section>
+      {isLoaded && 
+        <>
+        <Hero />
+        <section className='z-10' id='about'>
+          <About />
+        </section>
+        <section className='z-10 -my-3' id='skills'>
+          <Skills />
+        </section>
+        <section className='z-10 -my-3' id='experience'>
+          <Experience />
+        </section>
+        <section className='z-10' id='contact'>
+          <Contact />
+        </section>
+        <section className='z-10' id='footer'>
+          <Footer />
+        </section>
+        </>
+      }
     </div>
   )
 }

@@ -29,7 +29,7 @@ const ContactItem = ({ src, alt, link }: { src: string, alt: string, link: strin
 
 const ContactInfo = () => {
   return (
-    <div className="flex flex-col md:items-start items-center md:w-96 w-full bg-dark-primary h-max shadow-2xl rounded-xl md:-mr-28 z-10 md:px-12 py-12 text-3xl font-bold text-dark-text">
+    <div className="z-20 flex flex-col md:items-start items-center md:w-96 w-full bg-dark-primary h-max shadow-2xl rounded-xl md:-mr-28 md:px-12 py-12 text-3xl font-bold text-dark-text">
       <h2>
         Contact Me!
       </h2>
@@ -82,7 +82,7 @@ const ContactForm = () => {
   }
 
   return (
-    <div className="w-full bg-dark-darkGrey h-[80vh] shadow-2xl rounded-xl md:pl-36 pl-8 md:pr-12 pr-8 py-12 text-dark-text">
+    <div className="z-10 w-full bg-dark-darkGrey h-[80vh] shadow-2xl rounded-xl md:pl-36 pl-8 md:pr-12 pr-8 py-12 text-dark-text">
       <h2 className="md:text-3xl text-3xl font-bold">Get in Touch</h2>
       <form className="mt-12 flex gap-3 flex-col group" onSubmit={handleSubmit}>
         <label>
@@ -161,11 +161,13 @@ export default function Contact() {
   return (
     <div className="transition-all min-h-screen font-satoshi pb-24 bg-dark-background md:px-24 px-8 pt-16 flex flex-col">
       <div className="flex items-center justify-center md:flex-row flex-col-reverse">
-        <FadeIn>
-          <HoverCraft>
-            <ContactInfo />
-          </HoverCraft>
-        </FadeIn>
+        <div className="z-20">
+          <FadeIn>
+            <HoverCraft>
+              <ContactInfo />
+            </HoverCraft>
+          </FadeIn>
+        </div>
         <ContactForm />
       </div>
       

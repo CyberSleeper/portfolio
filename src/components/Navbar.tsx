@@ -1,7 +1,7 @@
 import ThemeContext from "@/contexts/ThemeContext"
 import { useContext, useState } from "react";
 import Link from 'next/link'
-import { GiHamburgerMenu } from "react-icons/gi";
+import { RxHamburgerMenu } from "react-icons/rx";
 import gsap from "gsap";
 import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
 import { useEffect } from "react";
@@ -108,7 +108,7 @@ const Navbar = () => {
 
   return (
     <>
-    <nav className={`${isLoaded ? 'top-0 delay-[4000ms]' : '-top-24'} duration-[2000ms] z-20 shadow-xl font-satoshi transition-all flex fixed left-0 w-full bg-dark-background scale-95 my-5 px-6 h-16 align-middle items-center justify-between rounded-2xl`}>
+    <nav className={`${isLoaded ? 'top-0 delay-[4000ms]' : '-top-24'} duration-[2000ms] z-50 shadow-xl font-satoshi transition-all flex fixed left-0 w-full bg-dark-background scale-95 my-5 px-6 h-16 align-middle items-center justify-between rounded-2xl`}>
       <div className="flex gap-6 align-middle justify-center items-center">
         <Link onMouseEnter={handleHover} onMouseLeave={handleMouseLeave} href='/' className={`w-32 overflow-hidden flex h-8 transition-all items-center text-2xl font-bold text-dark-accent whitespace-pre-line`}>
           <p>G</p>
@@ -133,12 +133,12 @@ const Navbar = () => {
           className="text-2xl text-dark-text hover:cursor-pointer"
           onClick={handleMobileMenuToggle}
         >
-          <GiHamburgerMenu />
+          <RxHamburgerMenu />
         </button>
       </div>
     </nav>
     {/* {isMobileMenuOpen && ( */}
-      <div className={`z-20 md:hidden fixed w-full h-full bg-black bg-opacity-90 transition-all duration-700 flex items-center justify-center ${isMobileMenuOpen ? "top-0" : "-top-full"}`} onClick={handleMobileMenuToggle}>
+      <div className={`z-50 md:hidden fixed w-full h-full bg-black bg-opacity-90 transition-all duration-700 flex items-center justify-center ${isMobileMenuOpen ? "top-0" : "-top-full"}`} onClick={handleMobileMenuToggle}>
         <div className="flex flex-col gap-8 items-center">
           <NavLink href="#about">About</NavLink>
           <NavLink href="#skills">Skills</NavLink>

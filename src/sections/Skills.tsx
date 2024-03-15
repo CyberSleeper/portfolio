@@ -123,11 +123,11 @@ export default function Skills() {
     <div 
       ref={baseDiv}
       onMouseMove={handleMouseMove}
-      className="z-10 bg-dark-darkGrey px-20 overflow-hidden relative hover:cursor-none"
+      className="z-10 bg-light-primary dark:bg-dark-darkGrey px-20 overflow-hidden relative hover:cursor-none"
     >
       <div
         ref={cursorDiv}
-        className="opacity-0 absolute w-16 h-16 rounded-full pointer-events-none z-10 mix-blend-difference"
+        className="opacity-0 absolute w-16 h-16 rounded-full pointer-events-none z-20 mix-blend-difference"
         style={{filter: "invert(1)"}}
       >
         <div className="relative rounded-full border-2 w-20 h-20 flex items-center align-middle justify-center">
@@ -147,10 +147,10 @@ export default function Skills() {
               />
             </div>
           </div>
-          <div className="text-black z-10 absolute flex w-max h-max min-w-24 min-h-24 items-center animate-spin-slow-10">
+          <div className="text-black z-20 absolute flex w-max h-max min-w-24 min-h-24 items-center animate-spin-slow-10">
             <PiStarFourFill className="w-5 h-5 animate-spin-reverse-slow-5"/>
           </div>
-          <div className="text-black z-10 absolute flex w-max h-max min-w-36 min-h-36 justify-center animate-spin-reverse-slow-15">
+          <div className="text-black z-20 absolute flex w-max h-max min-w-36 min-h-36 justify-center animate-spin-reverse-slow-15">
             <GiMoonOrbit className="w-5 h-5 animate-spin-slow-15"/>
           </div>
           <div className="text-black absolute flex w-max h-max min-w-32 min-h-32 border-2 rounded-full"/>
