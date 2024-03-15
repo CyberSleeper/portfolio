@@ -11,7 +11,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <title>Mahartha Gemilang</title>
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
       </Head>
-      <main className="text-black dark:text-white ">
+      <main className="text-white ">
         <ThemeProvider>
           <Navbar />
           <main>

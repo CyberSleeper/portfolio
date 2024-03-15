@@ -28,7 +28,7 @@ const NavLink = ({
     <div
       onMouseEnter={handleHover}
       onMouseLeave={handleMouseLeave}
-      className="text-xl text-light-secondary dark:text-dark-text hover:cursor-pointer"
+      className="text-xl text-dark-text hover:cursor-pointer"
       onClick={() => {
         gsap.to(window, { duration: 2, scrollTo: { y: href, offsetY: 150 }, ease: "circ.out"});
       }}
@@ -108,9 +108,9 @@ const Navbar = () => {
 
   return (
     <>
-    <nav className={`${isLoaded ? 'top-0 delay-[4000ms]' : '-top-24'} duration-[2000ms] z-20 shadow-xl font-satoshi transition-all flex fixed left-0 w-full bg-light-section dark:bg-dark-background scale-95 my-5 px-6 h-16 align-middle items-center justify-between rounded-2xl`}>
+    <nav className={`${isLoaded ? 'top-0 delay-[4000ms]' : '-top-24'} duration-[2000ms] z-20 shadow-xl font-satoshi transition-all flex fixed left-0 w-full bg-dark-background scale-95 my-5 px-6 h-16 align-middle items-center justify-between rounded-2xl`}>
       <div className="flex gap-6 align-middle justify-center items-center">
-        <Link onMouseEnter={handleHover} onMouseLeave={handleMouseLeave} href='/' className={`w-32 overflow-hidden flex h-8 transition-all items-center text-2xl font-bold text-light-secondary dark:text-dark-accent whitespace-pre-line`}>
+        <Link onMouseEnter={handleHover} onMouseLeave={handleMouseLeave} href='/' className={`w-32 overflow-hidden flex h-8 transition-all items-center text-2xl font-bold text-dark-accent whitespace-pre-line`}>
           <p>G</p>
           <div 
             className={`transition-all duration-500 overflow-hidden ${isHovering ? "w-full" : "w-0"}`}
@@ -130,7 +130,7 @@ const Navbar = () => {
       </div>
       <div className="md:hidden md:scale-0">
         <button
-          className="text-2xl text-light-secondary dark:text-dark-text hover:cursor-pointer"
+          className="text-2xl text-dark-text hover:cursor-pointer"
           onClick={handleMobileMenuToggle}
         >
           <GiHamburgerMenu />

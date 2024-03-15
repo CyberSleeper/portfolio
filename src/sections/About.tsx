@@ -43,7 +43,7 @@ export default function About() {
   })
 
   return (
-    <div ref={curved} className="-mt-48 transition-all font-satoshi pb-24 bg-light-background dark:bg-dark-background md:px-24 px-12 pt-16 flex flex-col items-center"
+    <div ref={curved} className="-mt-48 transition-all font-satoshi pb-24 bg-dark-background md:px-24 px-12 pt-16 flex flex-col items-center"
       style={{
         left: "-3%",
         borderTopLeftRadius: "100% 50%",
@@ -51,7 +51,7 @@ export default function About() {
       }}
     >
       <FadeIn>
-        <h1 className="md:text-5xl flex justify-center text-3xl font-bold text-light-text dark:text-dark-text">About Me</h1>
+        <h1 className="md:text-5xl flex justify-center text-3xl font-bold text-dark-text">About Me</h1>
       </FadeIn>
       <div className="flex mt-10 md:gap-16 gap-4 md:flex-row flex-col-reverse items-center">
         <div className="md:w-3/5 w-full">

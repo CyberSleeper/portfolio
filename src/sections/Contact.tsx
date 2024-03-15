@@ -159,10 +159,7 @@ const ContactForm = () => {
 
 export default function Contact() {
   return (
-    <div className="transition-all min-h-screen font-satoshi pb-24 bg-light-background dark:bg-dark-background md:px-24 px-8 pt-16 flex flex-col">
-      {/* <FadeIn>
-        <h1 className="text-5xl font-bold text-light-secondary dark:text-dark-secondary">Contact Me!</h1>
-      </FadeIn> */}
+    <div className="transition-all min-h-screen font-satoshi pb-24 bg-dark-background md:px-24 px-8 pt-16 flex flex-col">
       <div className="flex items-center justify-center md:flex-row flex-col-reverse">
         <FadeIn>
           <HoverCraft>

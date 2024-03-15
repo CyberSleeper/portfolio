@@ -164,7 +164,7 @@ export default function Experience() {
   return (
     <div className=" transition-all min-h-screen font-satoshi pb-24 bg-dark-background md:px-24 px-12 pt-16 flex flex-col">
       <FadeIn>
-        <h1 className="md:text-5xl text-3xl font-bold text-light-secondary dark:text-dark-secondary">My Experience</h1>
+        <h1 className="md:text-5xl text-3xl font-bold text-dark-secondary">My Experience</h1>
       </FadeIn>
       <div className="flex h-max">
         <div className="w-4 h-max bg-red-500"/>
@@ -173,16 +173,16 @@ export default function Experience() {
             experiences.map((experience, index) => (
               <HighlightOnScroll key={index}>
                 <div className="md:mt-14 mt-20">
-                  <h1 className="md:text-3xl text-2xl font-bold text-light-text dark:text-dark-text">{experience.position}</h1>
-                  <h2 className="md:text-xl text-lg font-bold text-light-accent dark:text-dark-accent">
+                  <h1 className="md:text-3xl text-2xl font-bold text-dark-text">{experience.position}</h1>
+                  <h2 className="md:text-xl text-lg font-bold text-dark-accent">
                     <a href={experience.company.website} target="_blank" rel="noreferrer" className="hover:underline">{experience.company.name}</a>
                   </h2>
-                  <h3 className="md:text-xl text-lg font-bold text-light-text dark:text-dark-text opacity-30">{experience.start_date} - {experience.end_date}</h3>
+                  <h3 className="md:text-xl text-lg font-bold text-dark-text opacity-30">{experience.start_date} - {experience.end_date}</h3>
                   <div className="mt-4">
                     {
                       experience.descriptions.map((description, index) => (
                         <BulletPoint key={index} index={experience.pref+index}>{description}</BulletPoint>
-                        // <p key={index} className="text-light-text dark:text-dark-text flex mb-2 gap-3"><WiMoonAltNew size={18} className="mt-1"/> {description}</p>
+                        // <p key={index} className="text-dark-text flex mb-2 gap-3"><WiMoonAltNew size={18} className="mt-1"/> {description}</p>
                       ))
                     }
                   </div>

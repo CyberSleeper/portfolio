@@ -123,7 +123,7 @@ export default function Skills() {
     <div 
       ref={baseDiv}
       onMouseMove={handleMouseMove}
-      className="z-10 bg-light-primary dark:bg-dark-darkGrey px-20 overflow-hidden relative hover:cursor-none"
+      className="z-10 bg-dark-darkGrey px-20 overflow-hidden relative hover:cursor-none"
     >
       <div
         ref={cursorDiv}
