@@ -5,7 +5,7 @@ import { Canvas, useFrame, useLoader, useThree } from '@react-three/fiber'
 import ThemeContext from '@/contexts/ThemeContext'
 import OrbitControls from '@/components/orbitControls'
 import { useMediaQuery } from 'react-responsive';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { gsap } from 'gsap';
 
 import { PiAsteriskDuotone } from "react-icons/pi";
