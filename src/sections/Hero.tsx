@@ -36,10 +36,10 @@ export default function Hero() {
               repeat={Infinity}
             />
           </h1>
-          <div className="flex md:w-auto gap-4">
+          <div className="flex md:flex-row flex-col md:w-auto gap-4">
             <FadeIn delay={4} duration={0.5}>
               <div
-                className="text-center md:text-xl text-lg md:px-6 px-5 md:py-4 py-3 md:w-fit rounded-xl text-black bg-dark-primary hover:bg-dark-accent font-bold hover:cursor-pointer hover:scale-105 active:scale-90 transition-all"
+                className="text-center md:text-xl text-lg md:px-6 px-5 md:py-4 py-3 md:w-fit rounded-xl text-white bg-dark-primary hover:bg-dark-accent font-bold hover:cursor-pointer hover:scale-105 active:scale-90 transition-all"
                 onClick={() => {
                   gsap.to(window, { duration: 2, scrollTo: { y: "#about", offsetY: 150 }, ease: "circ.out"});
                 }}

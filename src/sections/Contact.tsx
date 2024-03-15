@@ -82,9 +82,9 @@ const ContactForm = () => {
   }
 
   return (
-    <div className="z-10 w-full bg-dark-darkGrey min-h-max shadow-2xl rounded-xl md:pl-36 pl-8 md:pr-12 pr-8 py-12 text-dark-text">
-      <h2 className="md:text-3xl text-3xl font-bold">Get in Touch</h2>
-      <form className="mt-12 flex gap-3 flex-col group" onSubmit={handleSubmit}>
+    <div className="z-10 w-full bg-dark-darkGrey min-h-max shadow-2xl rounded-xl md:pl-36 pl-5 md:pr-12 pr-5 py-12 text-dark-text">
+      <h2 className="md:text-3xl md:text-left text-center text-4xl font-bold">Get in Touch</h2>
+      <form className="md:mt-12 mt-4 flex gap-3 flex-col group" onSubmit={handleSubmit}>
         <label>
           <input
             id="id_name"

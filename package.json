@@ -15,7 +15,6 @@
     "@types/gsap": "^3.0.0",
     "@types/react-curved-text": "^2.0.3",
     "@types/three": "^0.160.0",
-    "framer-motion": "^11.0.3",
     "gsap": "^3.12.5",
     "next": "14.1.0",
     "react": "^18.2.0",
