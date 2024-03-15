@@ -56,13 +56,11 @@ const ContactForm = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    console.log("first")
-    setIsLoading(true)
     if (name && email && message) {
+      setIsLoading(true)
       const serviceId = "default_service";
       const templateId = "template_mzrslqd";
       const publicKey = "nxb5Ffrs9zY0zgHFI";
-      console.log(serviceId, templateId, publicKey)
       emailjs.sendForm(serviceId, templateId, e.currentTarget, publicKey)
       .then((result) => {
         setToastMessage("Message sent successfully!")
@@ -77,8 +75,6 @@ const ContactForm = () => {
         setToastMessage("Failed to send message!")
         setToastStatus("error")
         setShowToast(true)
-        console.log("Error")
-        console.log(error)
         setTimeout(() => setShowToast(false), 3000)
         setIsLoading(false)
       })
@@ -88,37 +84,52 @@ const ContactForm = () => {
   return (
     <div className="w-full bg-dark-darkGrey h-[80vh] shadow-2xl rounded-xl md:pl-36 pl-8 md:pr-12 pr-8 py-12 text-dark-text">
       <h2 className="md:text-3xl text-3xl font-bold">Get in Touch</h2>
-      <form className="mt-12 flex flex-col gap-6" onSubmit={handleSubmit}>
-        <input
-          id="id_name"
-          name="user_name"
-          required
-          type="text"
-          placeholder="Name"
-          className="transition-colors duration-500 w-full px-4 py-2 rounded-bl-xl border-b-2 border-gray-300 focus:outline-none focus:border-dark-accent bg-dark-darkGrey text-white"
-          onChange={(e) => setName(e.target.value)}
-          value={name}
-        />
-        <input
-          id="id_email"
-          name="user_email"
-          required
-          type="email"
-          placeholder="Email"
-          className="transition-colors duration-500 w-full px-4 py-2 rounded-bl-xl border-b-2 border-gray-300 focus:outline-none focus:border-dark-accent bg-dark-darkGrey text-white"
-          onChange={(e) => setEmail(e.target.value)}
-          value={email}
-        />
-        <textarea
-          id="id_message"
-          name="message"
-          required
-          placeholder="Hello Gilang!"
-          className="transition-colors duration-500 w-full px-4 py-2 rounded-bl-xl border-l-2 border-r-2 rounded-tr-xl border-b-2 border-t-2 border-gray-300 focus:outline-none focus:border-dark-accent bg-dark-darkGrey text-white"
-          rows={6}
-          onChange={(e) => setMessage(e.target.value)}
-          value={message}
-        ></textarea>
+      <form className="mt-12 flex gap-3 flex-col group" onSubmit={handleSubmit}>
+        <label>
+          <input
+            id="id_name"
+            name="user_name"
+            required
+            type="text"
+            placeholder="Name"
+            className="peer transition-colors duration-300 w-full px-4 py-2 rounded-bl-xl border-b-2 border-gray-300 focus:border-dark-accent focus:invalid:border-red-500 invalid:[&:not(:placeholder-shown):not(:focus)]:border-red-500 focus:outline-none bg-dark-darkGrey text-white"
+            onChange={(e) => setName(e.target.value)}
+            value={name}
+          />
+          <span className="transition-all duration-300 mt-2 opacity-0 text-sm text-red-500 peer-[:focus:invalid]:opacity-100 peer-[&:not(:placeholder-shown):not(:focus):invalid]:opacity-100">
+            Please fill out this field
+          </span>
+        </label>
+        <label>
+          <input
+            id="id_email"
+            name="user_email"
+            type="email"
+            required
+            placeholder="Email"
+            className="peer transition-colors duration-300 w-full px-4 py-2 rounded-bl-xl border-b-2 border-gray-300 focus:border-dark-accent focus:invalid:border-red-500 invalid:[&:not(:placeholder-shown):not(:focus)]:border-red-500 focus:outline-none bg-dark-darkGrey text-white"
+            onChange={(e) => setEmail(e.target.value)}
+            value={email}
+          />
+          <span className="transition-all duration-300 mt-2 opacity-0 text-sm text-red-500 peer-[:focus:invalid]:opacity-100 peer-[&:not(:placeholder-shown):not(:focus):invalid]:opacity-100">
+            Please enter a valid email address
+          </span>
+        </label>
+        <label>
+          <textarea
+            id="id_message"
+            name="message"
+            required
+            placeholder="Hello Gilang!"
+            className="peer transition-colors duration-300 w-full px-4 py-2 rounded-bl-xl border-l-2 border-r-2 rounded-tr-xl border-b-2 border-t-2 border-gray-300 focus:border-dark-accent focus:invalid:border-red-500 invalid:[&:not(:placeholder-shown):not(:focus)]:border-red-500 focus:outline-none bg-dark-darkGrey text-white"
+            rows={6}
+            onChange={(e) => setMessage(e.target.value)}
+            value={message}
+          ></textarea>
+          <span className="transition-all duration-300 mt-2 opacity-0 text-sm text-red-500 peer-[:focus:invalid]:opacity-100 peer-[&:not(:placeholder-shown):not(:focus):invalid]:opacity-100">
+            Please fill out this field
+          </span>
+        </label>
         <button
           disabled={isLoading}
           type="submit"
@@ -154,9 +165,7 @@ export default function Contact() {
       </FadeIn> */}
       <div className="flex items-center justify-center md:flex-row flex-col-reverse">
         <FadeIn>
-          <HoverCraft
-            
-          >
+          <HoverCraft>
             <ContactInfo />
           </HoverCraft>
         </FadeIn>
