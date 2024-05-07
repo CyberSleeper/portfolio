@@ -49,7 +49,7 @@ export default function Hero() {
             </FadeIn>
             <FadeIn delay={4.5} duration={0.5}>
               <Link
-                href='https://drive.google.com/file/d/1Wl3PkP8tsxTe8lMkubiJAin6k3URnJ7p/view?usp=sharing'
+                href='https://drive.google.com/file/d/1rxu9bFQLQZDcKl6x33xQ1wOHX730AQeK/view?usp=drive_link'
                 target="_blank"
                 rel="noreferrer"
               >
