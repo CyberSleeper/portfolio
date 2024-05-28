@@ -50,7 +50,7 @@ export default function Hero() {
             </FadeIn>
             <FadeIn delay={4.5} duration={0.5}>
               <Link
-                href='ristek.link/MaharthaGemilang_Resume'
+                href='https://ristek.link/MaharthaGemilang_Resume'
                 target="_blank"
                 rel="noreferrer"
               >
