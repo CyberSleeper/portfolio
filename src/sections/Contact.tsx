@@ -78,6 +78,33 @@ const ContactForm = () => {
         setTimeout(() => setShowToast(false), 3000)
         setIsLoading(false)
       })
+    } else {
+      if (!showToast) {
+        if (!name) {
+          setToastMessage("Please fill out the name field")
+          setToastStatus("error")
+          setShowToast(true)
+          setTimeout(() => setShowToast(false), 3000)
+          document.getElementById("id_name")?.focus()
+          return
+        }
+        if (!email) {
+          setToastMessage("Please fill out the email field")
+          setToastStatus("error")
+          setShowToast(true)
+          setTimeout(() => setShowToast(false), 3000)
+          document.getElementById("id_email")?.focus()
+          return
+        }
+        if (!message) {
+          setToastMessage("Please fill out the message field")
+          setToastStatus("error")
+          setShowToast(true)
+          setTimeout(() => setShowToast(false), 3000)
+          document.getElementById("id_message")?.focus()
+          return
+        }
+      }
     }
   }
 
@@ -89,7 +116,6 @@ const ContactForm = () => {
           <input
             id="id_name"
             name="user_name"
-            required
             type="text"
             placeholder="Name"
             className="peer transition-colors duration-300 w-full px-4 py-2 rounded-bl-xl border-b-2 border-gray-300 focus:border-dark-accent focus:invalid:border-red-500 invalid:[&:not(:placeholder-shown):not(:focus)]:border-red-500 focus:outline-none bg-dark-darkGrey text-white"
@@ -105,7 +131,6 @@ const ContactForm = () => {
             id="id_email"
             name="user_email"
             type="email"
-            required
             placeholder="Email"
             className="peer transition-colors duration-300 w-full px-4 py-2 rounded-bl-xl border-b-2 border-gray-300 focus:border-dark-accent focus:invalid:border-red-500 invalid:[&:not(:placeholder-shown):not(:focus)]:border-red-500 focus:outline-none bg-dark-darkGrey text-white"
             onChange={(e) => setEmail(e.target.value)}
@@ -119,7 +144,6 @@ const ContactForm = () => {
           <textarea
             id="id_message"
             name="message"
-            required
             placeholder="Hello Gilang!"
             className="peer transition-colors duration-300 w-full px-4 py-2 rounded-bl-xl border-l-2 border-r-2 rounded-tr-xl border-b-2 border-t-2 border-gray-300 focus:border-dark-accent focus:invalid:border-red-500 invalid:[&:not(:placeholder-shown):not(:focus)]:border-red-500 focus:outline-none bg-dark-darkGrey text-white"
             rows={6}
