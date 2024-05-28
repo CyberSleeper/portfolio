@@ -19,6 +19,7 @@ import {
 } from "react-icons/wi";
 import { useState } from "react";
 import HighlightOnScroll from "@/components/animations/highlightOnScroll";
+import Hyperlink from "@/components/Hyperlink";
 
 interface CompanyProps {
   name: string
@@ -61,14 +62,15 @@ const experiences: ExperienceProps[] = [
       website: "https://www.tamanschool.com"
     },
     start_date: "Jan 2024",
-    end_date: "Present",
+    end_date: "Apr 2024",
     descriptions: [
+      "Optimized search query for finding classes, reducing search time from over 1 minute to under 3 second.",
       "Maintained the backend services for TamanSchool's platform.",
       "Developed the backend services for Class Making Request using Django.",
     ]
   },
   {
-    pref: 2,
+    pref: 3,
     position: "Fullstack Engineer",
     company: {
       name: "Pemira UI 2024",
@@ -82,7 +84,7 @@ const experiences: ExperienceProps[] = [
     ]
   },
   {
-    pref: 4,
+    pref: 5,
     position: "Lead Software Engineer",
     company: {
       name: "Open House Fasilkom UI 2023",
@@ -97,7 +99,7 @@ const experiences: ExperienceProps[] = [
     ]
   },
   {
-    pref: 7,
+    pref: 8,
     position: "Fullstack Engineer",
     company: {
       name: "PMB Fasilkom UI 2023",
@@ -111,7 +113,7 @@ const experiences: ExperienceProps[] = [
     ]
   },
   {
-    pref: 9,
+    pref: 10,
     position: "Software Engineer",
     company: {
       name: "GovTech Procurement | Telkom Indonesia",
@@ -125,7 +127,7 @@ const experiences: ExperienceProps[] = [
     ]
   },
   {
-    pref: 11,
+    pref: 12,
     position: "Fullstack Engineer",
     company: {
       name: "PERAK Fasilkom UI 2023",
@@ -150,7 +152,7 @@ const BulletPoint: React.FC<BulletPointProps> = ({ index, children }) => {
   return (
     <div className="flex mb-2 md:gap-1 gap-0.5 md:text-lg text-sm">
       <div className="floatleft md:h-7 h-5 w-auto flex items-center align-middle aspect-square">
-        <BulletStyle size={30} className="md:w-6 w-4 h-auto aspect-square" />
+        <BulletStyle size={30} color="#fde68a" className="md:w-6 w-4 h-auto aspect-square" />
       </div>
       <div className="w-fit float-right">
         {children}
@@ -158,7 +160,6 @@ const BulletPoint: React.FC<BulletPointProps> = ({ index, children }) => {
     </div>
   );
 };
-
 
 export default function Experience() {
   return (
@@ -175,7 +176,10 @@ export default function Experience() {
                 <div className="md:mt-14 mt-20">
                   <h1 className="md:text-3xl text-2xl font-bold text-dark-text">{experience.position}</h1>
                   <h2 className="md:text-xl text-lg font-bold text-dark-accent">
-                    <a href={experience.company.website} target="_blank" rel="noreferrer" className="hover:underline">{experience.company.name}</a>
+                    <Hyperlink
+                      href={experience.company.website}
+                      hexColor="#60C1E3"
+                    >{experience.company.name}</Hyperlink>
                   </h2>
                   <h3 className="md:text-xl text-lg font-bold text-dark-text opacity-30">{experience.start_date} - {experience.end_date}</h3>
                   <div className="mt-4">

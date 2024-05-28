@@ -4,27 +4,8 @@ import FadeIn from "@/components/animations/fadeIn";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import Link from "next/link";
+import Hyperlink from "@/components/Hyperlink";
 gsap.registerPlugin(ScrollTrigger);
-
-function Hyperlink({ children, href, hexColor }: { children: string, href: string, hexColor: string }) {
-  const [isHovered, setIsHovered] = useState(false);
-  return (
-    <Link 
-      onMouseEnter={() => setIsHovered(true)} 
-      onMouseLeave={() => setIsHovered(false)} 
-      href={href}
-      target="_blank"
-      rel="noreferrer"
-      className="relative inline-block"
-    >
-      <span className={`${isHovered ? "opacity-100" : "opacity-80"} transition-all font-bold`} style={{ color: hexColor }}>
-        {children}
-      </span>
-      <span className={`rounded-full absolute h-1 bottom-0 left-0 transition-width duration-200 ease-in-out ${isHovered ? "w-full" : "w-0"}`} style={{ backgroundColor: hexColor }}/>
-    </Link>
-  );
-}
 
 export default function About() {
   const el = useRef(null);
@@ -80,11 +61,11 @@ export default function About() {
               Hello, I am <Hyperlink 
                 href="https://www.linkedin.com/in/mahartha-gemilang/" 
                 hexColor="#60C1E3"
-              >Mahartha Gemilang</Hyperlink> but people usually call me Gilang. I'm an 
+              >Mahartha Gemilang</Hyperlink> but people usually call me Gilang. I&apos;m an 
               undergraduate computer science student at <Hyperlink 
                 href="https://www.ui.ac.id" 
                 hexColor="#FDE047"
-              > University of Indonesia</Hyperlink>. As a student, I'm constantly seeking opportunities 
+              > University of Indonesia</Hyperlink>. As a student, I&apos;m constantly seeking opportunities 
               to learn and grow. This drive to learn fuels my passion for both web development and 
               competitive programming.
             </div>

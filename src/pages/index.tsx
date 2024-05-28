@@ -134,11 +134,11 @@ export default function App() {
               <>
                 <Model isMobile={false}/>
                 <mesh rotation={[-Math.PI/3, 0, 0]} receiveShadow={true} position={[0, 0, -3.5]}>
-                  <planeGeometry args={[20, 20, 32, 32]} />
+                  <planeGeometry args={[30, 30, 32, 32]} />
                   <meshStandardMaterial color={planeColor} />
                 </mesh>
                 <mesh receiveShadow={true} position={[0, 0, -1.5]}>
-                  <planeGeometry args={[20, 20, 32, 32]} />
+                  <planeGeometry args={[40, 40, 32, 32]} />
                   <meshStandardMaterial color={planeColor} />
                 </mesh>
               </>
