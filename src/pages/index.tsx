@@ -1,14 +1,9 @@
 import * as THREE from 'three'
 import * as React from 'react'
-import { useRef, useState, useLayoutEffect, useEffect } from 'react'
-import { Canvas, useFrame, useLoader, useThree } from '@react-three/fiber'
-import ThemeContext from '@/contexts/ThemeContext'
-import OrbitControls from '@/components/orbitControls'
+import { useState, useLayoutEffect, useEffect } from 'react'
+import { Canvas, useFrame, useLoader } from '@react-three/fiber'
 import { useMediaQuery } from 'react-responsive';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
-import { gsap } from 'gsap';
-
-import { PiAsteriskDuotone } from "react-icons/pi";
 
 import Hero from '@/sections/Hero'
 import About from '@/sections/About'
@@ -16,98 +11,13 @@ import Skills from '@/sections/Skills'
 import Experience from '@/sections/Experience'
 import Contact from '@/sections/Contact'
 import Footer from '@/sections/Footer'
+import Revolution from '@/components/Revolution'
 
 interface objProps {
   horizontal?: boolean
   speed: number
   delta: { x: number, y: number, z: number }
   color: string
-}
-
-function Box(props: JSX.IntrinsicElements['mesh'] & objProps) {
-  const ref = useRef<THREE.Mesh>(null!)
-  const [hovered, hover] = useState(false)
-  const [clicked, click] = useState(false)
-  useFrame((state) => {
-    ref.current.rotation.x += props.delta.x
-    ref.current.rotation.y += props.delta.y
-    ref.current.rotation.z += props.delta.z
-    ref.current.position.y = Math.sin(state.clock.getElapsedTime() * props.speed) 
-  })
-
-
-  return (
-    <mesh
-      scale={clicked ? 1.5 : 1}
-      {...props}
-      ref={ref}
-      onClick={(event) => click(!clicked)}
-      onPointerOver={(event) => hover(true)}
-      onPointerOut={(event) => hover(false)}
-      castShadow={true}
-    >
-      <boxGeometry args={[1, 1, 1]} />
-      <meshStandardMaterial color={props.color} />
-    </mesh>
-  )
-}
-
-function Tetra(props: JSX.IntrinsicElements['mesh'] & objProps) {
-  const ref = useRef<THREE.Mesh>(null!)
-  const [hovered, hover] = useState(false)
-  const [clicked, click] = useState(false)
-  useFrame((state) => {
-    ref.current.rotation.x += props.delta.x
-    ref.current.rotation.y += props.delta.y
-    ref.current.rotation.z += props.delta.z
-    ref.current.position.y = Math.sin(state.clock.getElapsedTime() * props.speed) 
-  })
-
-
-  return (
-    <mesh
-      scale={clicked ? 1.5 : 1}
-      {...props}
-      ref={ref}
-      onClick={(event) => click(!clicked)}
-      onPointerOver={(event) => hover(true)}
-      onPointerOut={(event) => hover(false)}
-      castShadow={true}
-    >
-      <tetrahedronGeometry args={[1, 0]} />
-      <meshStandardMaterial color={props.color} />
-    </mesh>
-  )
-}
-
-function Sphere(props: JSX.IntrinsicElements['mesh'] & objProps) {
-  const ref = useRef<THREE.Mesh>(null!)
-
-  useFrame((state) => {
-    ref.current.rotation.x += props.delta.x
-    ref.current.rotation.y += props.delta.y
-    ref.current.rotation.z += props.delta.z
-    ref.current.position.y = Math.sin(state.clock.getElapsedTime() * props.speed)
-  })
-  
-  return (
-    <mesh
-      {...props}
-      ref={ref}
-      castShadow={true}
-    >
-      <capsuleGeometry args={[0.5, 1, 32, 32]} />
-      <meshStandardMaterial color={props.color} />
-    </mesh>
-    // <mesh
-    //   {...props}
-    //   ref={ref}
-    //   castShadow={true}
-    // >
-    //   <sphereGeometry args={[1, 32, 32]} />
-    //   <meshStandardMaterial color={props.color} />
-    // </mesh>
-  )
 }
 
 function Light(props: JSX.IntrinsicElements['mesh']) {
@@ -131,7 +41,6 @@ function Light(props: JSX.IntrinsicElements['mesh']) {
   return (
     <mesh>
       <pointLight position={[mouse.x * 5, mouse.y * 5, 2]} intensity={10} castShadow={true} />
-      {/* <directionalLight position={[mouse.x * 5, mouse.y * 5, 2]} intensity={1} castShadow={true} /> */}
     </mesh>
   )
 }
@@ -140,7 +49,6 @@ function Model({ isMobile }: { isMobile: boolean }) {
   const [mouse, setMouse] = useState({ x: 0, y: 0 })
   const gltf = useLoader(GLTFLoader, 'three_models/suicopath.glb');
 
-  // Set custom position
   const defaultY = (isMobile ? -1 : -1.3);
 
   if (isMobile){
@@ -200,11 +108,9 @@ export default function App() {
   return (
     <div className='min-h-screen w-full'>
       <div className={`delay-[850ms] fixed transition-all duration-1000 bg-dark-background h-screen w-full flex justify-center items-center ${isLoaded ? '-bottom-full' : 'bottom-0'}`}>
-        <div className='animate-spin-slow-10'>
-          <span className='animate-pulse'>
-            <PiAsteriskDuotone size={70}/>
-          </span>
-        </div>
+        <span className='animate-pulse'>
+          <Revolution />
+        </span>
       </div>
       <div className='-z-10 h-screen w-full top-0 left-0 fixed'>
         {isLoaded &&
@@ -214,9 +120,6 @@ export default function App() {
             <Light />
             {isMobile ? (
               <>
-                {/* <Box position={[-0.4, 0, 1]} scale={0.5} speed={1} delta={{ x: 0, y: 0.01, z: 0 }} color={meshColor} />
-                <Tetra position={[0, 0, -0.5]} scale={0.6} speed={1.4} delta={{ x: -0.01, y: 0, z: 0 }} color={meshColor} />
-                <Sphere position={[0.8, -2, 0]} scale={0.3} speed={0.8} delta={{ x: 0.017, y: -0.0001, z: 0.0007 }} color={meshColor} /> */}
                 <Model isMobile={true} />
                 <mesh rotation={[-Math.PI/3, 0, 0]} receiveShadow={true} position={[0, 0, -3.5]}>
                   <planeGeometry args={[20, 20, 32, 32]} />
@@ -229,9 +132,6 @@ export default function App() {
               </>
             ) : (
               <>
-                {/* <Box position={[3.2, 0, 1]} scale={0.5} speed={1} delta={{ x: 0, y: 0.01, z: 0 }} color={meshColor} />
-                <Tetra position={[3, 0, -0.5]} scale={0.6} speed={1.4} delta={{ x: -0.01, y: 0, z: 0 }} color={meshColor} />
-                <Sphere position={[3.8, -2, 0]} scale={0.3} speed={0.8} delta={{ x: 0.017, y: -0.0001, z: 0.0007 }} color={meshColor} /> */}
                 <Model isMobile={false}/>
                 <mesh rotation={[-Math.PI/3, 0, 0]} receiveShadow={true} position={[0, 0, -3.5]}>
                   <planeGeometry args={[20, 20, 32, 32]} />
