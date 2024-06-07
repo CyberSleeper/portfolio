@@ -3,6 +3,7 @@ import Head from 'next/head';
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import { ThemeProvider } from "@/contexts/ThemeContext";
+import { Analytics } from '@vercel/analytics/react';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -16,6 +17,7 @@ export default function App({ Component, pageProps }: AppProps) {
           <Navbar />
           <main>
             <Component {...pageProps} />
+            <Analytics />
           </main>
         </ThemeProvider>
       </main>
