@@ -11,6 +11,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <Head>
         <title>Mahartha Gemilang</title>
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
+        <meta name="google-site-verification" content="gHKp2Lt2jjuFGgeGr85Zxf6vWr58Ec-_BhEU6xRiR2g" />
       </Head>
       <main className="text-white ">
         <ThemeProvider>
