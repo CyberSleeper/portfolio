@@ -52,7 +52,7 @@ function Model({ isMobile }: { isMobile: boolean }) {
   const defaultY = (isMobile ? -1 : -1.3);
 
   if (isMobile){
-    gltf.scene.position.set(2, defaultY, 0);
+    gltf.scene.position.set(1.5, defaultY, 0);
     gltf.scene.scale.set(0.7, 0.7, 0.7);
   }else{
     gltf.scene.position.set(3, defaultY, 0.4);

@@ -82,13 +82,31 @@ const bulletStyles = [
 const experiences: ExperienceProps[] = [
   {
     pref: 0,
+    position: "DevOps Engineer",
+    company: {
+      name: "Reliable Software Engineering Lab | Faculty of Computer Science University of Indonesia",
+      website: "https://prices.amanah.cs.ui.ac.id/",
+    },
+    start_date: "Jan 2025",
+    end_date: "Present",
+    descriptions: [
+      "Successfully deployed 3 distinct services using Docker and Nginx, ensuring scalable and highly available infrastructure.",
+      "Configured RabbitMQ for a Spring Boot application to handle large file uploads (up to 200MB per request), improving performance and reliability.",
+      "Conducted stress testing using K6 to calculate resource utilization and implemented Docker and systemd configurations to limit service usage, ensuring efficient resource management.",
+      "Revamped deployment automation by transitioning from root user to a dedicated deployment user, significantly improving security practices.",
+      "Identified and resolved a staging server outage using Prometheus and Grafana for monitoring. Removed spam deployments causing memory leaks and successfully rebooted the server to restore functionality.",
+    ],
+  },
+  {
+    pref: 5,
     position: "Frontend Engineer",
     company: {
       name: "Kapaloku",
-      website: "#",
+      website:
+        "https://yacht-landing-cybersleeper-cybersleepers-projects.vercel.app/",
     },
     start_date: "Jun 2024",
-    end_date: "Present",
+    end_date: "Jan 2025",
     descriptions: [
       "Developed the Admin Panel with 9 primary sections (e.g., Trips, Boats, Sponsorships), each containing multiple subpages for detailed functionality",
       "Developed the Admin Panel with 3 primary sections (Analytics, Bookings, and Marketings), each containing multiple subpages for detailed functionality",
@@ -97,7 +115,7 @@ const experiences: ExperienceProps[] = [
     ],
   },
   {
-    pref: 4,
+    pref: 9,
     position: "Fullstack Engineer",
     company: {
       name: "BangSoal",
@@ -113,7 +131,7 @@ const experiences: ExperienceProps[] = [
     ],
   },
   {
-    pref: 8,
+    pref: 13,
     position: "Backend Engineer",
     company: {
       name: "TamanSchool",
@@ -128,7 +146,7 @@ const experiences: ExperienceProps[] = [
     ],
   },
   {
-    pref: 11,
+    pref: 16,
     position: "Fullstack Engineer",
     company: {
       name: "Pemira UI 2024",
@@ -142,7 +160,7 @@ const experiences: ExperienceProps[] = [
     ],
   },
   {
-    pref: 13,
+    pref: 18,
     position: "Lead Software Engineer",
     company: {
       name: "Open House Fasilkom UI 2023",
@@ -157,7 +175,7 @@ const experiences: ExperienceProps[] = [
     ],
   },
   {
-    pref: 16,
+    pref: 21,
     position: "Fullstack Engineer",
     company: {
       name: "PMB Fasilkom UI 2023",
@@ -171,7 +189,7 @@ const experiences: ExperienceProps[] = [
     ],
   },
   {
-    pref: 18,
+    pref: 23,
     position: "Software Engineer",
     company: {
       name: "GovTech Procurement | Telkom Indonesia",
@@ -185,7 +203,7 @@ const experiences: ExperienceProps[] = [
     ],
   },
   {
-    pref: 20,
+    pref: 25,
     position: "Fullstack Engineer",
     company: {
       name: "PERAK Fasilkom UI 2023",

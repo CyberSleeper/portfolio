@@ -18,6 +18,7 @@ export default function Hero() {
     'Fullstack\nDeveloper', 1000,
     'Competitive\nProgrammer', 1000,
     'Software\nEngineer', 1000,
+    'DevOps\nEngineer', 1000,
     'Problem\nSolver', 1000,
     'Lifelong\nLearner', 1000
   ];
@@ -50,7 +51,7 @@ export default function Hero() {
             </FadeIn>
             <FadeIn delay={4.5} duration={0.5}>
               <Link
-                href='https://ristek.link/MaharthaGemilang_Resume'
+                href='https://drive.google.com/file/d/1ALmk0dhpH8ekubfwIMiQbgO7kHpQO1-X/view?usp=sharing'
                 target="_blank"
                 rel="noreferrer"
               >
